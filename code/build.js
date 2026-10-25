@@ -2,7 +2,7 @@
 // typed coding exercises and bakes them into index.html from template.html. Run: node build.js
 // Exercise ids are the Brighter Path question ids, so solved marks and drafts survive rebuilds.
 const fs = require('fs'), path = require('path');
-const SRC = path.join(__dirname, '..', 'quest-path', 'content');
+const SRC = path.join(__dirname, '..', '..', 'quest-path', 'content');
 global.window = global;
 require(path.join(SRC, '_base.js'));
 
