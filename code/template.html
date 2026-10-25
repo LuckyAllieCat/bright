@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Brighter Code</title>
+<meta name="theme-color" content="#1d9fe6">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Brighter Code">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<script>try { if (localStorage.getItem('brighterCode.theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root {   /* light (default): white and blue, like AnkiDroid */
+  --nav: #1d9fe6; --nav-text: #ffffff; --nav-active: #ffffff;
+  --bg: #ffffff; --panel: #ffffff; --text: #1b1f22; --muted: #5f6b74; --line: #e2e7eb;
+  --accent: #1d9fe6; --accent-text: #ffffff; --link: #1565c0; --done: #43a047;
+  --ok-bg: #e8f5e9; --ok-line: #a5d6a7; --ok-text: #1b5e20;
+  --bad-bg: #fdecea; --bad-line: #f5b5b0; --bad-text: #8e1c16;
+  --info-bg: #e8f4fd; --info-line: #b9dcf6;
+  --code-bg: #f3f6f8; --editor-bg: #ffffff; --tag: #e3f2fd; --tag-text: #1565c0; --key: #ffffff; --key-bar: #dfe7ed;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", monospace;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --nav: #1e2a33; --nav-text: #e8eef2; --nav-active: #64b5f6;
+  --bg: #1c1f22; --panel: #25292d; --text: #e6eaed; --muted: #9aa5ad; --line: #353b41;
+  --accent: #1a86c4; --accent-text: #ffffff; --link: #7ab8ec; --done: #66bb6a;
+  --ok-bg: #1d3524; --ok-line: #2f6b3d; --ok-text: #a8e2b4;
+  --bad-bg: #3a2224; --bad-line: #7a3a3e; --bad-text: #f1b1b1;
+  --info-bg: #1f2e3b; --info-line: #34506a;
+  --code-bg: #1b1f23; --editor-bg: #1b1f23; --tag: #243745; --tag-text: #9ccdf3; --key: #353b41; --key-bar: #141719;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.5 "Source Sans 3", "Segoe UI", system-ui, sans-serif; padding-bottom: env(safe-area-inset-bottom, 0px); }
+a { color: var(--link); }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+code, pre, textarea.ed, .mono { font-family: var(--mono); }
+
+nav.top { background: var(--nav); color: var(--nav-text); padding: env(safe-area-inset-top, 0px) 16px 0; position: sticky; top: 0; z-index: 5; }
+nav.top .in { max-width: 920px; margin: 0 auto; display: flex; align-items: center; gap: 18px; min-height: 52px; flex-wrap: wrap; }
+.brand { font-weight: 700; font-size: 19px; color: var(--nav-text); text-decoration: none; letter-spacing: .01em; display: flex; align-items: center; gap: 8px; }
+.brand .mark { font-family: var(--mono); color: var(--nav-active); font-size: 16px; }
+.tabs { display: flex; gap: 4px; margin-left: auto; }
+.tabs a { color: var(--nav-text); text-decoration: none; padding: 14px 10px 12px; border-bottom: 3px solid transparent; font-weight: 600; opacity: .85; }
+.tabs a.on { border-bottom-color: var(--nav-active); opacity: 1; }
+.gear { color: var(--nav-text); display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; opacity: .9; }
+.gear:hover { background: rgba(255,255,255,.14); }
+.gear svg { width: 22px; height: 22px; fill: currentColor; }
+.setting { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; max-width: 560px; }
+.setting p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+.seg { display: inline-flex; border: 1px solid var(--accent); border-radius: 6px; overflow: hidden; flex: none; }
+.seg button { border: 0; background: var(--panel); color: var(--accent); padding: 7px 16px; font-weight: 600; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); }
+
+main { max-width: 920px; margin: 0 auto; padding: 20px 16px 48px; }
+h1 { font-size: 28px; line-height: 1.2; margin: 0 0 6px; text-wrap: balance; }
+h2 { font-size: 20px; margin: 0; }
+.sub { color: var(--muted); margin: 0 0 18px; }
+.bar { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; margin: 8px 0 24px; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+
+/* exercise list */
+details.unit { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; margin-bottom: 12px; }
+details.unit > summary { list-style: none; cursor: pointer; padding: 14px 16px; display: flex; align-items: baseline; gap: 12px; }
+details.unit > summary::-webkit-details-marker { display: none; }
+details.unit > summary::before { content: "▸"; color: var(--muted); transition: transform .15s; display: inline-block; }
+details.unit[open] > summary::before { transform: rotate(90deg); }
+details.unit > summary .count { margin-left: auto; color: var(--muted); font-size: 15px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lesson { padding: 0 16px 10px; }
+.lesson h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 8px 0 4px; font-weight: 600; }
+ol.ex { list-style: none; margin: 0; padding: 0; }
+ol.ex a { display: grid; grid-template-columns: 22px 2.1em 1fr auto; align-items: baseline; gap: 8px; padding: 9px 4px; border-top: 1px solid var(--line); color: var(--text); text-decoration: none; }
+ol.ex a:hover { background: var(--bg); }
+.dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--line); display: inline-block; transform: translateY(2px); }
+.dot.ok { background: var(--done); border-color: var(--done); position: relative; }
+.dot.ok::after { content: ""; position: absolute; left: 3px; top: 0; width: 4px; height: 7px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.num { color: var(--muted); font-variant-numeric: tabular-nums; }
+.ttl { min-width: 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.35; }
+.ttl code { font-size: .88em; }
+.tag { font-size: 12px; background: var(--tag); color: var(--tag-text); padding: 1px 8px; border-radius: 10px; white-space: nowrap; font-weight: 600; }
+
+/* exercise page */
+.crumbs { font-size: 15px; color: var(--muted); margin-bottom: 6px; }
+.crumbs a { color: var(--muted); }
+.head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+.statement { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: grid; gap: 12px; }
+.statement p { margin: 0; max-width: 68ch; }
+.statement code, .note code { background: var(--code-bg); padding: 1px 5px; border-radius: 3px; font-size: .88em; }
+pre.block { margin: 0; background: var(--code-bg); border: 1px solid var(--line); border-radius: 5px; padding: 10px 12px; font-size: 14px; line-height: 1.55; overflow-x: auto; white-space: pre; }
+.lbl { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+details.more { border-top: 1px solid var(--line); padding-top: 10px; }
+details.more summary { cursor: pointer; color: var(--link); font-weight: 600; }
+details.more[open] summary { margin-bottom: 8px; }
+.tables { display: grid; gap: 12px; }
+.tscroll { overflow-x: auto; }
+table.t { border-collapse: collapse; font-size: 13px; font-family: var(--mono); }
+table.t th, table.t td { border: 1px solid var(--line); padding: 3px 7px; text-align: left; white-space: nowrap; }
+table.t th { background: var(--code-bg); }
+table.t td.null { color: var(--muted); font-style: italic; }
+
+.editor { margin-top: 18px; }
+.edwrap { display: flex; background: var(--editor-bg); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.edwrap:focus-within { border-color: var(--link); }
+.gutter { padding: 10px 6px 10px 10px; color: var(--muted); font: 14px/1.6 var(--mono); text-align: right; user-select: none; white-space: pre; opacity: .7; min-width: 2.4em; background: var(--code-bg); }
+textarea.ed { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--text); font-size: 14px; line-height: 1.6; padding: 10px 12px; resize: none; min-height: 9.6em; outline: none; white-space: pre; overflow-x: auto; tab-size: 4; }
+textarea.ed.plain { white-space: pre-wrap; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; align-items: center; }
+.btn { border: 1px solid var(--line); background: var(--panel); color: var(--text); padding: 8px 16px; border-radius: 5px; font-weight: 600; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); padding-inline: 22px; }
+.btn:disabled { opacity: .55; cursor: default; }
+.btn.link { border: 0; background: none; color: var(--link); padding-inline: 6px; }
+.status { color: var(--muted); font-size: 15px; }
+
+.result { margin-top: 16px; border: 1px solid; border-radius: 6px; padding: 12px 16px; display: grid; gap: 8px; }
+.result h2 { font-size: 18px; }
+.result.ok { background: var(--ok-bg); border-color: var(--ok-line); color: var(--ok-text); }
+.result.bad { background: var(--bad-bg); border-color: var(--bad-line); color: var(--bad-text); }
+.result.info { background: var(--info-bg); border-color: var(--info-line); color: var(--text); }
+.result pre { margin: 0; font-size: 13px; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--text); background: var(--panel); border-radius: 4px; padding: 8px 10px; }
+.result .cmp { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.result .cmp > div { min-width: 0; }
+.note { background: var(--info-bg); border: 1px solid var(--info-line); border-radius: 6px; padding: 10px 14px; margin-top: 12px; }
+.note p { margin: 0; }
+.pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 28px; border-top: 1px solid var(--line); padding-top: 14px; }
+.pager a { text-decoration: none; font-weight: 600; max-width: 48%; }
+
+/* symbol keys above the phone keyboard */
+.keys { position: fixed; left: 0; right: 0; bottom: var(--kb, 0px); background: var(--key-bar); padding: 5px 4px calc(5px + env(safe-area-inset-bottom, 0px)); z-index: 20; display: grid; gap: 5px; box-shadow: 0 -2px 8px rgba(0,0,0,.15); }
+.keys .row { display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; padding-inline: 2px; }
+.keys .row::-webkit-scrollbar { display: none; }
+.keys button { flex: none; min-width: 38px; height: 38px; padding: 0 9px; border: 0; border-radius: 5px; background: var(--key); color: var(--text); font: 15px var(--mono); box-shadow: 0 1px 0 rgba(0,0,0,.2); touch-action: manipulation; }
+.keys .row.words button { font-size: 13px; height: 34px; }
+.keys button:active { filter: brightness(.9); }
+body.typing main { padding-bottom: 120px; }
+@media (hover: hover) and (pointer: fine) { .keys { display: none; } }
+@media (max-width: 520px) { h1 { font-size: 23px; } ol.ex a { grid-template-columns: 22px 2em 1fr; } ol.ex .tag { display: none; } .tabs a { padding-inline: 7px; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<nav class="top"><div class="in">
+  <a class="brand" href="#/"><span class="mark">&gt;_</span>Brighter Code</a>
+  <div class="tabs" id="tabs"></div>
+  <a class="gear" href="#/settings" aria-label="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.48.48 0 0 0-.59.22L2.74 8.87a.47.47 0 0 0 .12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.47.47 0 0 0-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg></a>
+</div></nav>
+<main id="main"></main>
+<div class="keys" id="keys" hidden></div>
+
+<script>
+const DATA = /*DATA*/null;
+const SUBJ = Object.fromEntries(DATA.subjects.map(s => [s.key, s]));
+const KIND = { code: 'Write code', order: 'Puzzle', output: 'Predict the output', write: 'Write it', query: 'Query' };
+const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const md = s => esc(s).replace(/`([^`]+)`/g, '<code>$1</code>');
+
+// flat index: each exercise knows its subject, unit, lesson and number
+const EX = {}, ORDER = {};
+for (const s of DATA.subjects) {
+  ORDER[s.key] = [];
+  s.units.forEach((u, ui) => u.lessons.forEach((l, li) => l.ex.forEach(e => {
+    Object.assign(e, { s: s.key, ui, li, n: ORDER[s.key].length + 1 }); EX[e.id] = e; ORDER[s.key].push(e.id);
+  })));
+}
+function title(e) {
+  const sentences = e.q.split(/(?<=[.!?])\s+(?=[A-Z])/);
+  if (e.kind === 'query') return md(sentences[sentences.length - 1]);
+  if (e.kind === 'output') return `Predict: <code>${esc(e.code.split('\n').find(l => l.trim()) || '')}</code>`;
+  // skip sentences that only describe what already exists ("The list `prices` exists.")
+  const task = sentences.find(x => !/\b(already|exists?|is given|are given)\b/i.test(x)) || sentences[0];
+  return md(task.replace(/^(With|Using) [^,]{1,40}, (\w)/, (m, a, c) => c.toUpperCase()));
+}
+
+/* ---------- progress (this browser) ---------- */
+const KEY = 'brighterCode.v1';
+let P = { solved: {}, drafts: {}, fails: {} };
+try { Object.assign(P, JSON.parse(localStorage.getItem(KEY)) || {}); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(P)); } catch (e) {} };
+
+/* ---------- SQL (sql.js) ---------- */
+const SQLJS = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.12.0/';
+let sqlLib = null;
+function loadSQL() {
+  if (!sqlLib) sqlLib = new Promise((res, rej) => {
+    const sc = document.createElement('script'); sc.src = SQLJS + 'sql-wasm.js';
+    sc.onload = () => initSqlJs({ locateFile: f => SQLJS + f }).then(res, rej); sc.onerror = rej;
+    document.head.appendChild(sc);
+  }).catch(() => { sqlLib = null; return null; });
+  return sqlLib;
+}
+function sqlRun(lib, stmt, check) {
+  const db = new lib.Database();
+  try {
+    db.run(SUBJ.sql.db || '');
+    let r = db.exec(stmt); if (check) r = db.exec(check);
+    const last = r[r.length - 1]; return { cols: last ? last.columns : [], rows: last ? last.values : [] };
+  } catch (e) { return { err: e.message }; } finally { db.close(); }
+}
+function sqlOrdered(ref) { let s = ref, p; do { p = s; s = s.replace(/\([^()]*\)/g, ''); } while (s !== p); return /\border\s+by\b/i.test(s); }
+function sqlJudge(lib, user, q) {
+  const want = sqlRun(lib, q.sql, q.check), got = sqlRun(lib, user, q.check);
+  if (want.err || got.err) return { ok: false, got, want };
+  const ordered = q.ordered != null ? q.ordered : sqlOrdered(q.sql);
+  const key = r => JSON.stringify(r.map(v => typeof v === 'number' ? Math.round(v * 1e6) / 1e6 : v));
+  let a = got.rows.map(key), b = want.rows.map(key); if (!ordered) { a.sort(); b.sort(); }
+  const lc = cs => cs.map(c => c.toLowerCase());
+  const named = [...q.sql.matchAll(/\bAS\s+"?(\w+)"?/gi)].map(m => m[1].toLowerCase())
+    .filter(n => new RegExp(`\\b${n}\\b`, 'i').test(q.q) && lc(want.cols).includes(n));
+  const missingNames = named.filter(n => !lc(got.cols).includes(n));
+  const missing = (q.must || []).filter(m => !new RegExp(m.re, 'i').test(user));
+  const sameRows = a.length === b.length && a.every((v, i) => v === b[i]);
+  return { ok: got.cols.length === want.cols.length && sameRows && !missingNames.length && !missing.length, got, want, missingNames, missing, ordered, sameSet: sameRows || (a.slice().sort().join() === b.slice().sort().join()) };
+}
+function table(r, max = 12) {
+  if (r.err) return `<pre>${esc(r.err)}</pre>`;
+  if (!r.cols.length) return '<p>(no result)</p>';
+  return `<div class="tscroll"><table class="t"><tr>${r.cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${r.rows.slice(0, max).map(row => `<tr>${row.map(v => v === null ? '<td class="null">NULL</td>' : `<td>${esc(v)}</td>`).join('')}</tr>`).join('')}</table></div>${r.rows.length > max ? `<p>… ${r.rows.length} rows in total</p>` : r.rows.length ? '' : '<p>(0 rows)</p>'}`;
+}
+
+/* ---------- Python (Pyodide in a worker, so a runaway loop can be stopped) and R (webR) ---------- */
+const PYO = 'https://cdn.jsdelivr.net/pyodide/v0.29.5/full/', WEBR = 'https://webr.r-wasm.org/v0.6.0/webr.mjs';
+let py = null;
+function pyStart() {
+  if (py) return py.ready;
+  const src = `importScripts('${PYO}pyodide.js'); const ready = loadPyodide({ indexURL:'${PYO}' });
+    ready.then(() => postMessage({ ready:true }), e => postMessage({ ready:false, err:String(e) }));
+    onmessage = async e => { const p = await ready, out = [];
+      p.setStdout({ batched: s => out.push(s) }); p.setStderr({ batched: s => out.push(s) });
+      try { await p.loadPackagesFromImports(e.data, { messageCallback: () => {} }); } catch (err) {}
+      postMessage({ started:true });
+      const g = p.globals.get('dict')();
+      try { await p.runPythonAsync(e.data, { globals:g }); postMessage({ ok:true, out:out.join('\\n') }); }
+      catch (err) { const m = String(err.message).trim(), at = [...m.matchAll(/File "<exec>", line (\\d+)/g)].pop();
+        postMessage({ ok:false, out:out.join('\\n'), err:m.split('\\n').pop(), line: at ? +at[1] : 0 }); }
+      finally { g.destroy(); } };`;
+  const w = new Worker(URL.createObjectURL(new Blob([src], { type: 'text/javascript' })));
+  py = { w, ready: new Promise(res => {
+    const t = setTimeout(() => { w.terminate(); res(null); }, 60000);
+    w.onmessage = e => { clearTimeout(t); res(e.data.ready ? w : null); }; w.onerror = () => { clearTimeout(t); res(null); };
+  }) };
+  return py.ready;
+}
+async function runPython(code) {
+  const w = await pyStart(); if (!w) { py = null; return { ok: false, err: 'Python could not start. Check your connection and submit again.', offline: true }; }
+  return new Promise(res => {
+    let timer = null;
+    const load = setTimeout(() => { w.terminate(); py = null; res({ ok: false, err: 'Loading the Python packages took too long. Submit again.', offline: true }); }, 60000);
+    w.onmessage = e => {
+      if (e.data.started) { clearTimeout(load); timer = setTimeout(() => { w.terminate(); py = null; res({ ok: false, err: 'Stopped after 8 seconds. Is there a loop that never ends?' }); }, 8000); return; }
+      clearTimeout(timer); res(e.data);
+    };
+    w.postMessage(code);
+  });
+}
+let rt = null;
+const R_OK = '__brighter_code_ok__';
+function rStart() {
+  if (!rt) rt = Promise.race([
+    import(WEBR).then(async ({ WebR, ChannelType }) => { const w = new WebR({ channelType: ChannelType.PostMessage }); await w.init(); return w; }),
+    new Promise(res => setTimeout(() => res(null), 90000)),
+  ]).catch(() => null);
+  return rt;
+}
+async function runR(code) {
+  const w = await rStart(); if (!w) { rt = null; return { ok: false, err: 'R could not start. Check your connection and submit again.', offline: true }; }
+  const sh = await new w.Shelter();
+  const run = sh.captureR(code, { withAutoprint: false, captureStreams: true, captureConditions: false })
+    .then(r => {   // webR reports an R error as stderr text, so success is the marker the harness prints after the tests pass
+      const out = r.output.filter(o => o.type === 'stdout' || o.type === 'stderr').map(o => o.data).join('\n');
+      const ok = out.includes(R_OK), clean = out.replace(R_OK, '').trim();
+      const errLine = r.output.filter(o => o.type === 'stderr').map(o => o.data).join('\n').replace(/^Error in [^:]*:\s*/, '').replace(/^Error:\s*/, '');
+      return ok ? { ok: true, out: clean } : { ok: false, out: clean, err: errLine || 'The checks failed.' };
+    })
+    .catch(e => ({ ok: false, err: String(e.message || e).replace(/^Error in [^:]*:\s*/, '') }));
+  const timeout = new Promise(res => setTimeout(() => res({ ok: false, err: 'Stopped after 10 seconds. Is there a loop that never ends?', dead: true }), 10000));
+  const r = await Promise.race([run, timeout]);
+  if (r.dead) { try { w.close(); } catch (e) {} rt = null; } else sh.purge();
+  return r;
+}
+// setup + your code run in one environment; the tests run in a child of it that uses base R's own checking helpers
+function rHarness(setup, user, tests) {
+  const str = t => JSON.stringify(t);
+  return `local({
+.e <- new.env(parent = globalenv())
+eval(parse(text = ${str(setup + '\n' + user)}), envir = .e)
+.t <- new.env(parent = .e)
+for (.f in c("stopifnot","identical","isTRUE","isFALSE","all.equal","is.function","exists","inherits","is.na","length","nrow","ncol","names","all","any","abs","sum","round","sort","is.numeric","is.character","is.data.frame","is.list","is.null","c","list","rep","seq_len"))
+  assign(.f, get(.f, envir = baseenv()), envir = .t)
+eval(parse(text = ${str(tests)}), envir = .t)
+cat("\n${R_OK}\n")
+})`;
+}
+async function runCode(e, user) {
+  const setupN = e.setup ? e.setup.split('\n').length : 0, userN = user.split('\n').length;
+  const r = e.s === 'r' ? await runR(rHarness(e.setup || '', user, e.tests)) : await runPython([e.setup || '', user, e.tests].join('\n'));
+  const ln = r.line ? r.line - Math.max(setupN, 1) : 0;
+  if (!r.ok && ln >= 1 && ln <= userN) r.err = `Line ${ln}: ${r.err}`;
+  return r;
+}
+const warm = e => { if (e.kind === 'query') loadSQL(); else if (e.kind === 'code' || (e.kind === 'order' && e.tests)) (e.s === 'r' ? rStart : pyStart)(); };
+
+/* ---------- checking typed answers ---------- */
+const unq = s => s.replace(/[“”]/g, '"').replace(/[‘’]/g, "'").replace(/'/g, '"');
+const normOut = s => unq(s).split('\n').map(l => l.replace(/\s+/g, ' ').trim()).filter(Boolean).join('\n').toLowerCase();
+const normCode = s => unq(s).replace(/\s+/g, '').replace(/[;:]+$/, '');
+const normLines = s => s.split('\n').map(l => l.replace(/\s+/g, ' ').trim()).filter(Boolean).join('\n');
+
+/* ---------- views ---------- */
+const main = document.getElementById('main');
+function tabs(active) {
+  document.getElementById('tabs').innerHTML = DATA.subjects.map(s => `<a href="#/${s.key}" class="${s.key === active ? 'on' : ''}">${s.name}</a>`).join('');
+}
+function solvedIn(ids) { return ids.filter(id => P.solved[id]).length; }
+
+function home() {
+  tabs('');
+  main.innerHTML = `<h1>Coding exercises</h1><p class="sub">Type real code, submit it and it runs against checks. Pick a language to start.</p>` +
+    DATA.subjects.map(s => { const ids = ORDER[s.key], k = solvedIn(ids); return `
+      <details class="unit" open><summary><h2><a href="#/${s.key}">${s.name}</a></h2><span class="count">${k} / ${ids.length} solved</span></summary>
+      <div class="lesson"><div class="bar" style="margin:0 0 12px"><i style="width:${ids.length ? k / ids.length * 100 : 0}%"></i></div>
+      ${nextUp(s.key) ? `<a class="btn primary" href="#/${s.key}/${encodeURIComponent(nextUp(s.key))}" style="display:inline-block;text-decoration:none">${k ? 'Continue' : 'Start'}</a>` : '<p>All solved.</p>'}</div></details>`; }).join('');
+}
+const nextUp = sk => ORDER[sk].find(id => !P.solved[id]);
+
+function list(sk) {
+  const s = SUBJ[sk]; tabs(sk);
+  const ids = ORDER[sk], k = solvedIn(ids), nx = nextUp(sk), nxUnit = nx ? EX[nx].ui : -1;
+  main.innerHTML = `<h1>${s.name} exercises</h1><p class="sub">${k} of ${ids.length} solved</p>
+    <div class="bar"><i style="width:${ids.length ? k / ids.length * 100 : 0}%"></i></div>` +
+    s.units.map((u, ui) => {
+      const uid = u.lessons.flatMap(l => l.ex.map(e => e.id));
+      return `<details class="unit" ${ui === nxUnit ? 'open' : ''}><summary><h2>${esc(u.title)}</h2><span class="count">${solvedIn(uid)} / ${uid.length}</span></summary>
+        ${u.lessons.map(l => `<div class="lesson"><h3>${esc(l.title)}</h3><ol class="ex">${l.ex.map(e => `<li><a href="#/${sk}/${encodeURIComponent(e.id)}">
+          <span class="dot ${P.solved[e.id] ? 'ok' : ''}" role="img" aria-label="${P.solved[e.id] ? 'Solved' : 'Not solved yet'}"></span>
+          <span class="num">${e.n}.</span><span class="ttl">${title(e)}</span><span class="tag">${KIND[e.kind]}</span></a></li>`).join('')}</ol></div>`).join('')}
+      </details>`;
+    }).join('');
+}
+
+let cur = null;   // exercise on screen
+function exercisePage(id) {
+  const e = EX[id]; if (!e) return list(Object.keys(SUBJ)[0]);
+  cur = e; tabs(e.s); warm(e);
+  const s = SUBJ[e.s], u = s.units[e.ui], l = u.lessons[e.li];
+  const ids = ORDER[e.s], i = ids.indexOf(id), prev = ids[i - 1], next = ids[i + 1];
+  const draft = P.drafts[id] ?? (e.starter || '');
+  let body = `<p>${md(e.q)}</p>`;
+  if (e.kind === 'output') body += `<div><div class="lbl">Program</div><pre class="block">${esc(e.code)}</pre></div><p>Type exactly what it prints. If it crashes, type <code>error</code>.</p>`;
+  if (e.kind === 'write' && e.code) body += `<pre class="block">${esc(e.code)}</pre>`;
+  if (e.kind === 'code' && e.setup) body += `<div><div class="lbl">Already set up for you</div><pre class="block">${esc(e.setup)}</pre></div>`;
+  if (e.kind === 'order') body += `<div><div class="lbl">Pieces, shuffled${e.pieces.length > e.solution.split('\n').length ? ' (some are decoys)' : ''}</div><pre class="block">${esc(e.pieces.join('\n'))}</pre></div><p>Type the program using the right pieces in the right order.</p>`;
+  if (e.kind === 'query' && e.pattern) body += `<div><div class="lbl">Pattern</div><pre class="block">${esc(e.pattern)}</pre></div>`;
+  if (e.kind === 'query') body += `<details class="more" id="tablesBox"><summary>Tables</summary><pre class="block">${esc(s.schema)}</pre><div class="tables" id="tablesData" style="margin-top:10px"><p class="status">Loading the data…</p></div></details>`;
+  if (l.teach && (l.teach.text || l.teach.code)) body += `<details class="more"><summary>Lesson notes: ${esc(l.title)}</summary><p>${md(l.teach.text)}</p>${l.teach.code ? `<pre class="block" style="margin-top:8px">${esc(l.teach.code)}</pre>` : ''}</details>`;
+  const plain = e.kind === 'output';
+  main.innerHTML = `
+    <div class="crumbs"><a href="#/${e.s}">${s.name}</a> › ${esc(u.title)} › ${esc(l.title)}</div>
+    <div class="head"><h1>${e.n}. ${title(e)}</h1><span class="tag">${KIND[e.kind]}</span>${P.solved[id] ? '<span class="tag" style="background:var(--ok-bg);color:var(--ok-text)">Solved</span>' : ''}</div>
+    <section class="statement">${body}</section>
+    <div class="editor">
+      <label class="lbl" for="ed">${plain ? 'What it prints' : e.kind === 'query' ? 'Your query' : 'Your code'}</label>
+      <div class="edwrap">${plain ? '' : '<div class="gutter" id="gutter" aria-hidden="true">1</div>'}
+        <textarea id="ed" class="ed ${plain ? 'plain' : ''}" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="off">${esc(draft)}</textarea></div>
+      <div class="actions">
+        <button class="btn primary" id="submit">Submit</button>
+        ${e.hint ? '<button class="btn" id="hintBtn">Hint</button>' : ''}
+        <button class="btn link" id="solBtn" ${P.solved[id] || P.fails[id] ? '' : 'hidden'}>Show a solution</button>
+        <span class="status" id="status" role="status"></span>
+      </div>
+      <div id="hintBox"></div>
+      <div id="result" aria-live="polite"></div>
+    </div>
+    <nav class="pager">${prev ? `<a href="#/${e.s}/${encodeURIComponent(prev)}">← ${EX[prev].n}. Previous</a>` : '<span></span>'}${next ? `<a href="#/${e.s}/${encodeURIComponent(next)}" style="text-align:right">${EX[next].n}. Next →</a>` : `<a href="#/${e.s}">Back to the list</a>`}</nav>`;
+  const ed = document.getElementById('ed');
+  sizeEditor(); ed.addEventListener('input', () => { P.drafts[id] = ed.value; sizeEditor(); clearTimeout(ed._t); ed._t = setTimeout(save, 400); });
+  ed.addEventListener('beforeinput', autoIndent);
+  ed.addEventListener('keydown', ev => {
+    if (ev.key === 'Tab' && !ev.shiftKey) { ev.preventDefault(); insert(indentUnit()); }
+    if (ev.key === 'Enter' && (ev.ctrlKey || ev.metaKey)) { ev.preventDefault(); submit(); }
+  });
+  document.getElementById('submit').onclick = submit;
+  document.getElementById('hintBtn')?.addEventListener('click', () => { document.getElementById('hintBox').innerHTML = `<div class="note"><p><b>Hint:</b> ${md(e.hint)}</p></div>`; });
+  document.getElementById('solBtn').onclick = () => {
+    document.getElementById('hintBox').innerHTML = `<div class="note"><div class="lbl">One solution</div><pre class="block">${esc(e.solution)}</pre></div>`;
+  };
+  document.getElementById('tablesBox')?.addEventListener('toggle', showTables, { once: true });
+  window.scrollTo(0, 0);
+}
+async function showTables() {
+  const box = document.getElementById('tablesData'), lib = await loadSQL();
+  if (!box) return;
+  if (!lib) { box.innerHTML = '<p class="status">The SQL engine could not load. Check your connection.</p>'; return; }
+  const names = [...SUBJ.sql.db.matchAll(/CREATE TABLE (\w+)/g)].map(m => m[1]);
+  box.innerHTML = names.map(n => `<div><div class="lbl">${n}</div>${table(sqlRun(lib, `SELECT * FROM ${n}`), 50)}</div>`).join('');
+}
+function sizeEditor() {
+  const ed = document.getElementById('ed'), g = document.getElementById('gutter'); if (!ed) return;
+  const n = Math.max(ed.value.split('\n').length, 1);
+  if (g) g.textContent = Array.from({ length: Math.max(n, 6) }, (_, i) => i < n ? i + 1 : '').join('\n');
+  ed.style.height = 'auto'; ed.style.height = Math.max(ed.scrollHeight, 150) + 'px';
+}
+
+/* editing helpers: indentation, inserting from the symbol keys */
+const indentUnit = () => cur && cur.s === 'r' ? '  ' : '    ';
+function insert(text, back = 0) {
+  const ed = document.getElementById('ed'); if (!ed) return;
+  ed.focus();
+  if (!document.execCommand('insertText', false, text)) ed.setRangeText(text, ed.selectionStart, ed.selectionEnd, 'end');
+  if (back) { const p = ed.selectionStart - back; ed.setSelectionRange(p, p); }
+  ed.dispatchEvent(new Event('input'));
+}
+function autoIndent(ev) {
+  if (ev.inputType !== 'insertLineBreak' && ev.inputType !== 'insertParagraph') return;
+  const ed = ev.target; if (ed.classList.contains('plain')) return;
+  ev.preventDefault();
+  const before = ed.value.slice(0, ed.selectionStart), line = before.slice(before.lastIndexOf('\n') + 1);
+  let ind = line.match(/^\s*/)[0];
+  if (/[:{(\[]\s*$/.test(line)) ind += indentUnit();
+  insert('\n' + ind);
+}
+function move(d) {
+  const ed = document.getElementById('ed'); ed.focus();
+  const p = Math.max(0, Math.min(ed.value.length, ed.selectionStart + d)); ed.setSelectionRange(p, p);
+}
+function dedent() {
+  const ed = document.getElementById('ed'); ed.focus();
+  const s = ed.selectionStart, start = ed.value.lastIndexOf('\n', s - 1) + 1, unit = indentUnit();
+  if (ed.value.slice(start, start + unit.length) === unit) { ed.setSelectionRange(start, start + unit.length); insert(''); ed.setSelectionRange(s - unit.length, s - unit.length); }
+}
+const KEYS = {
+  python: { sym: ['⇥', '⇤', '←', '→', '()', '[]', '{}', ':', '=', '""', "''", '_', '.', ',', '#', '+', '-', '*', '/', '<', '>', '!', '%', '=='],
+    words: ['print(', 'def ', 'return ', 'for ', ' in ', 'if ', 'elif ', 'else:', 'while ', 'range(', 'len(', 'True', 'False', 'None', 'and ', 'or ', 'not ', 'import ', 'append(', 'df[', 'self'] },
+  r: { sym: ['⇥', '⇤', '←', '→', '<-', '()', '[]', '{}', '$', '""', ',', '=', '==', '%>%', '|>', '~', ':', '#', '+', '-', '*', '/', '<', '>', '!', '&', '|'],
+    words: ['c(', 'function(', 'return(', 'print(', 'paste(', 'length(', 'sum(', 'mean(', 'if (', 'else ', 'for (', ' in ', 'TRUE', 'FALSE', 'NA', 'NULL', 'library(', 'data.frame(', 'filter(', 'mutate(', 'summarise(', 'group_by(', 'arrange(', 'select(', 'ggplot(', 'aes('] },
+  sql: { sym: ['←', '→', '*', ',', '()', "''", '=', '<', '>', '<>', ';', '.', '%', '_', '||', '+', '-', '/'],
+    words: ['SELECT ', 'FROM ', 'WHERE ', 'AND ', 'OR ', 'NOT ', 'GROUP BY ', 'ORDER BY ', 'HAVING ', 'JOIN ', 'LEFT JOIN ', 'ON ', 'AS ', 'DESC', 'LIMIT ', 'DISTINCT ', 'COUNT(', 'SUM(', 'AVG(', 'MIN(', 'MAX(', 'ROUND(', 'IS NULL', 'IS NOT NULL', 'LIKE ', 'IN (', 'BETWEEN ', 'CASE WHEN ', 'THEN ', 'ELSE ', 'END', 'OVER (', 'PARTITION BY ', 'WITH ', 'INSERT INTO ', 'VALUES (', 'UPDATE ', 'SET ', 'DELETE FROM ', 'cats', 'owners', 'cities', 'visits'] },
+};
+const keysEl = document.getElementById('keys');
+function renderKeys() {
+  const k = KEYS[cur.s], plain = cur.kind === 'output';
+  const sym = plain ? ['←', '→', '[]', '()', "''", '""', ',', ':', '{}', '.', '-'] : k.sym;
+  keysEl.innerHTML = `<div class="row">${sym.map(x => `<button type="button" data-k="${esc(x)}" aria-label="${esc({ '⇥': 'Indent', '⇤': 'Unindent', '←': 'Cursor left', '→': 'Cursor right' }[x] || x)}">${esc(x)}</button>`).join('')}</div>` +
+    (plain ? '' : `<div class="row words">${k.words.map(x => `<button type="button" data-k="${esc(x)}">${esc(x.trim() || x)}</button>`).join('')}</div>`);
+}
+keysEl.addEventListener('pointerdown', ev => { if (ev.target.closest('button')) ev.preventDefault(); });   // keep the phone keyboard open
+keysEl.addEventListener('click', ev => {
+  const b = ev.target.closest('button'); if (!b) return;
+  const k = b.dataset.k;
+  if (k === '⇥') return insert(indentUnit());
+  if (k === '⇤') return dedent();
+  if (k === '←') return move(-1);
+  if (k === '→') return move(1);
+  if (['()', '[]', '{}', '""', "''"].includes(k)) return insert(k, 1);
+  const open = (k.match(/\(/g) || []).length - (k.match(/\)/g) || []).length;
+  if (k.endsWith('(') && open > 0) return insert(k + ')', 1);
+  if (k === 'df[') return insert('df[]', 1);
+  insert(k);
+});
+document.addEventListener('focusin', ev => { if (ev.target.id === 'ed') { renderKeys(); keysEl.hidden = false; document.body.classList.add('typing'); placeKeys(); } });
+document.addEventListener('focusout', ev => { if (ev.target.id === 'ed') setTimeout(() => { if (document.activeElement?.id !== 'ed') { keysEl.hidden = true; document.body.classList.remove('typing'); } }, 120); });
+function placeKeys() {
+  const vv = window.visualViewport; if (!vv) return;
+  const kb = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+  keysEl.style.setProperty('--kb', kb + 'px');
+}
+window.visualViewport?.addEventListener('resize', placeKeys);
+window.visualViewport?.addEventListener('scroll', placeKeys);
+
+/* ---------- submit ---------- */
+async function submit() {
+  const e = cur, ed = document.getElementById('ed'), user = ed.value, out = document.getElementById('result'), st = document.getElementById('status'), btn = document.getElementById('submit');
+  if (!user.trim()) { out.innerHTML = `<div class="result info"><p>Type your answer first.</p></div>`; return; }
+  btn.disabled = true; out.innerHTML = '';
+  let ok = false, html = '';
+  try {
+    if (e.kind === 'output') {
+      ok = e.accept.some(a => normOut(a) === normOut(user)) || (normOut(e.solution) === 'error' && /error/i.test(user));
+      html = ok ? '' : `<div class="cmp"><div><div class="lbl">You typed</div><pre>${esc(user)}</pre></div></div><p>Not what it prints. Trace it line by line, or use a hint.</p>`;
+    } else if (e.kind === 'write') {
+      ok = e.accept.some(a => normCode(a) === normCode(user));
+      html = ok ? '' : `<p>That isn't one of the answers this exercise accepts. Check spelling, brackets and quotes.</p>`;
+    } else if (e.kind === 'query') {
+      st.textContent = 'Running your query…';
+      const lib = await loadSQL();
+      if (!lib) html = `<p>The SQL engine could not load. Check your connection and submit again.</p>`;
+      else {
+        const j = sqlJudge(lib, user, e); ok = j.ok;
+        if (!ok) {
+          const why = j.got.err ? 'Your query has an error.' : j.missingNames.length ? `Name the column${j.missingNames.length > 1 ? 's' : ''} with AS: ${j.missingNames.join(', ')}.`
+            : j.missing.length ? j.missing.map(m => m.msg).join(' ') : j.got.cols.length !== j.want.cols.length ? `Your result has ${j.got.cols.length} column${j.got.cols.length === 1 ? '' : 's'}; the expected one has ${j.want.cols.length}.`
+            : j.ordered && j.sameSet ? 'Right rows, wrong order. Check your ORDER BY.' : 'Your result is different from the expected one.';
+          html = `<p>${esc(why)}</p><div class="cmp"><div><div class="lbl">Your result</div>${table(j.got)}</div><div><div class="lbl">Expected</div>${table(j.want)}</div></div>`;
+        } else html = `<div><div class="lbl">Your result</div>${table(j.got)}</div>`;
+      }
+    } else if (e.kind === 'order' && !e.tests) {
+      ok = normLines(user) === normLines(e.solution);
+      html = ok ? '' : `<p>Not the right pieces in the right order yet.</p>`;
+    } else {
+      st.textContent = e.s === 'r' ? 'Starting R… the first run takes a little while.' : 'Running your code… the first run takes a little while.';
+      const r = await runCode(e, user); ok = r.ok;
+      const outp = r.out ? `<div><div class="lbl">Output</div><pre>${esc(r.out)}</pre></div>` : '';
+      html = ok ? outp : `<pre>${esc(r.err || 'The checks failed.')}</pre>${outp}`;
+    }
+  } finally { btn.disabled = false; st.textContent = ''; }
+  if (ok) {
+    const first = !P.solved[e.id]; P.solved[e.id] = Date.now(); save();
+    const ids = ORDER[e.s], next = ids.slice(ids.indexOf(e.id) + 1).find(id => !P.solved[id]) || ids[ids.indexOf(e.id) + 1];
+    out.innerHTML = `<div class="result ok"><h2>Bravo! You solved it.</h2>${html}${next ? `<div><a class="btn primary" style="display:inline-block;text-decoration:none" href="#/${e.s}/${encodeURIComponent(next)}">Next exercise</a></div>` : '<p>That was the last one in this language.</p>'}</div>`;
+    document.getElementById('solBtn').hidden = false;
+    if (first) document.querySelector('.head').insertAdjacentHTML('beforeend', '<span class="tag" style="background:var(--ok-bg);color:var(--ok-text)">Solved</span>');
+  } else {
+    P.fails[e.id] = (P.fails[e.id] || 0) + 1; save();
+    out.innerHTML = `<div class="result bad"><h2>Not yet</h2>${html}</div>`;
+    document.getElementById('solBtn').hidden = false;
+  }
+  out.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+
+/* ---------- routing ---------- */
+function settings() {
+  tabs('');
+  const dark = document.documentElement.dataset.theme === 'dark';
+  main.innerHTML = `<h1>Settings</h1><p class="sub">Saved in this browser.</p>
+    <div class="setting"><div><b>Theme</b><p>Light is white and blue. Dark is easier on the eyes at night.</p></div>
+      <div class="seg" role="group" aria-label="Theme"><button data-theme="light" aria-pressed="${!dark}">Light</button><button data-theme="dark" aria-pressed="${dark}">Dark</button></div></div>`;
+  main.querySelectorAll('.seg button').forEach(b => b.onclick = () => { setTheme(b.dataset.theme); settings(); });
+}
+function setTheme(t) {
+  if (t === 'dark') document.documentElement.dataset.theme = 'dark'; else delete document.documentElement.dataset.theme;
+  document.querySelector('meta[name=theme-color]').content = t === 'dark' ? '#1e2a33' : '#1d9fe6';
+  try { localStorage.setItem('brighterCode.theme', t); } catch (e) {}
+}
+if (document.documentElement.dataset.theme === 'dark') document.querySelector('meta[name=theme-color]').content = '#1e2a33';
+
+function route() {
+  const [, sk, id] = location.hash.split('/').map(decodeURIComponent);
+  keysEl.hidden = true; document.body.classList.remove('typing');
+  if (sk === 'settings') { cur = null; settings(); window.scrollTo(0, 0); }
+  else if (sk && id && EX[id]) exercisePage(id);
+  else if (sk && SUBJ[sk]) { cur = null; list(sk); window.scrollTo(0, 0); }
+  else { cur = null; home(); }
+}
+window.addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>
