@@ -119,7 +119,12 @@ for (const c of cards) if (c.target) {
 const counts = {}; cards.forEach(c => counts[c.d] = (counts[c.d] || 0) + 1);
 console.log(cards.length, 'cards', counts);
 
-const data = JSON.stringify({ decks, cards }).replace(/</g, '\\u003c');
+// the 2-week plan decks (plans/*_flashcards_2w.json); `node import-plans.js` re-imports just these
+const { addPlans, printReport } = require('./plans.js');
+const withPlans = addPlans({ decks, cards });
+printReport(withPlans.report);
+
+const data = JSON.stringify(withPlans.data).replace(/</g, '\\u003c');
 const html = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8').replace('/*DATA*/null', () => data);
 fs.writeFileSync(path.join(__dirname, 'index.html'), html);
 console.log('wrote index.html', Math.round(html.length / 1024), 'KB');

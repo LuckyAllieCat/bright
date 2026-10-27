@@ -1,0 +1,824 @@
+{
+  "version": 1,
+  "language": "tr",
+  "plan": "Turkish 2-week aligned plan",
+  "decks": [
+    {
+      "deck": "Türkçe::01 Consonant alternation",
+      "topic": "Consonant alternation: softening & hardening",
+      "source": "Udemy 6–7 · Consonant Alternation 1–2",
+      "tags": [
+        "türkçe",
+        "plan-2w"
+      ],
+      "cards": [
+        {
+          "id": "tr-001",
+          "day": 1,
+          "type": "rule",
+          "front": "Softening: which consonants change before a vowel suffix?",
+          "back": "p → b, ç → c, t → d, k → ğ (nk → ng)"
+        },
+        {
+          "id": "tr-002",
+          "day": 1,
+          "type": "form",
+          "front": "kitap + -ı",
+          "back": "kitabı"
+        },
+        {
+          "id": "tr-003",
+          "day": 1,
+          "type": "form",
+          "front": "ağaç + -ı",
+          "back": "ağacı",
+          "note": "ağaç = tree"
+        },
+        {
+          "id": "tr-004",
+          "day": 1,
+          "type": "form",
+          "front": "kâğıt + -ı",
+          "back": "kâğıdı",
+          "note": "kâğıt = paper; often written kağıt"
+        },
+        {
+          "id": "tr-005",
+          "day": 1,
+          "type": "form",
+          "front": "çocuk + -u",
+          "back": "çocuğu"
+        },
+        {
+          "id": "tr-006",
+          "day": 1,
+          "type": "form",
+          "front": "renk + -i",
+          "back": "rengi",
+          "note": "nk → ng; one of the few one-syllable words that changes"
+        },
+        {
+          "id": "tr-007",
+          "day": 1,
+          "type": "form",
+          "front": "top + -u",
+          "back": "topu",
+          "note": "most one-syllable words don't soften"
+        },
+        {
+          "id": "tr-008",
+          "day": 1,
+          "type": "form",
+          "front": "saat + -i",
+          "back": "saati",
+          "note": "many loanwords don't soften"
+        },
+        {
+          "id": "tr-009",
+          "day": 1,
+          "type": "vocab",
+          "front": "kitap",
+          "back": "book"
+        },
+        {
+          "id": "tr-010",
+          "day": 1,
+          "type": "vocab",
+          "front": "çocuk",
+          "back": "child"
+        },
+        {
+          "id": "tr-011",
+          "day": 2,
+          "type": "rule",
+          "front": "Hardening: when does the d of -da / -de become t?",
+          "back": "After f, s, t, k, ç, ş, h, p (\"fıstıkçı şahap\")"
+        },
+        {
+          "id": "tr-012",
+          "day": 2,
+          "type": "form",
+          "front": "park + -da",
+          "back": "parkta"
+        },
+        {
+          "id": "tr-013",
+          "day": 2,
+          "type": "form",
+          "front": "ofis + -de",
+          "back": "ofiste"
+        },
+        {
+          "id": "tr-014",
+          "day": 2,
+          "type": "form",
+          "front": "sokak + -da",
+          "back": "sokakta"
+        },
+        {
+          "id": "tr-015",
+          "day": 2,
+          "type": "form",
+          "front": "ev + -de",
+          "back": "evde",
+          "note": "v is voiced, so d stays"
+        },
+        {
+          "id": "tr-016",
+          "day": 2,
+          "type": "form",
+          "front": "İstanbul + -da",
+          "back": "İstanbul'da",
+          "note": "proper nouns take an apostrophe"
+        },
+        {
+          "id": "tr-017",
+          "day": 2,
+          "type": "form",
+          "front": "Paris + -de",
+          "back": "Paris'te"
+        },
+        {
+          "id": "tr-018",
+          "day": 2,
+          "type": "vocab",
+          "front": "mutfak",
+          "back": "kitchen"
+        },
+        {
+          "id": "tr-019",
+          "day": 2,
+          "type": "vocab",
+          "front": "sokak",
+          "back": "street"
+        },
+        {
+          "id": "tr-020",
+          "day": 3,
+          "type": "sentence",
+          "front": "The bread is in the kitchen.",
+          "back": "Ekmek mutfakta."
+        },
+        {
+          "id": "tr-021",
+          "day": 3,
+          "type": "sentence",
+          "front": "The child is in the park.",
+          "back": "Çocuk parkta."
+        },
+        {
+          "id": "tr-022",
+          "day": 3,
+          "type": "sentence",
+          "front": "The book is in the bag.",
+          "back": "Kitap çantada."
+        },
+        {
+          "id": "tr-023",
+          "day": 3,
+          "type": "sentence",
+          "front": "Ahmet is at the office.",
+          "back": "Ahmet ofiste."
+        },
+        {
+          "id": "tr-024",
+          "day": 3,
+          "type": "rule",
+          "front": "Why kitabı but kitapta?",
+          "back": "Softening needs a vowel after it (kitab-ı); hardening happens when the suffix starts with d (kitap-ta)"
+        },
+        {
+          "id": "tr-025",
+          "day": 3,
+          "type": "form",
+          "front": "sokak + -ı / sokak + -da",
+          "back": "sokağı / sokakta"
+        },
+        {
+          "id": "tr-026",
+          "day": 3,
+          "type": "vocab",
+          "front": "ekmek",
+          "back": "bread",
+          "note": "ekmek + -i → ekmeği"
+        },
+        {
+          "id": "tr-027",
+          "day": 3,
+          "type": "vocab",
+          "front": "çanta",
+          "back": "bag"
+        }
+      ]
+    },
+    {
+      "deck": "Türkçe::02 This & that, here & there",
+      "topic": "bu / şu / o · burada / orada · burası",
+      "source": "Udemy 8–9 · This & That · Here & There",
+      "tags": [
+        "türkçe",
+        "plan-2w"
+      ],
+      "cards": [
+        {
+          "id": "tr-028",
+          "day": 4,
+          "type": "vocab",
+          "front": "bu",
+          "back": "this (near me)"
+        },
+        {
+          "id": "tr-029",
+          "day": 4,
+          "type": "vocab",
+          "front": "şu",
+          "back": "that (near you, or the one I'm pointing at)"
+        },
+        {
+          "id": "tr-030",
+          "day": 4,
+          "type": "vocab",
+          "front": "o",
+          "back": "that (over there); also he / she / it"
+        },
+        {
+          "id": "tr-031",
+          "day": 4,
+          "type": "sentence",
+          "front": "Bu ne?",
+          "back": "What is this?"
+        },
+        {
+          "id": "tr-032",
+          "day": 4,
+          "type": "sentence",
+          "front": "Bu bir kalem.",
+          "back": "This is a pen."
+        },
+        {
+          "id": "tr-033",
+          "day": 4,
+          "type": "rule",
+          "front": "bu kitap vs Bu bir kitap.",
+          "back": "bu kitap = this book; Bu bir kitap. = This is a book."
+        },
+        {
+          "id": "tr-034",
+          "day": 4,
+          "type": "sentence",
+          "front": "Şu ne?",
+          "back": "What is that?"
+        },
+        {
+          "id": "tr-035",
+          "day": 4,
+          "type": "sentence",
+          "front": "O bir masa.",
+          "back": "That is a table."
+        },
+        {
+          "id": "tr-036",
+          "day": 4,
+          "type": "vocab",
+          "front": "kalem",
+          "back": "pen / pencil"
+        },
+        {
+          "id": "tr-037",
+          "day": 4,
+          "type": "vocab",
+          "front": "masa",
+          "back": "table"
+        },
+        {
+          "id": "tr-038",
+          "day": 5,
+          "type": "vocab",
+          "front": "burada",
+          "back": "here"
+        },
+        {
+          "id": "tr-039",
+          "day": 5,
+          "type": "vocab",
+          "front": "şurada",
+          "back": "there (near you, right there)"
+        },
+        {
+          "id": "tr-040",
+          "day": 5,
+          "type": "vocab",
+          "front": "orada",
+          "back": "there (over there)"
+        },
+        {
+          "id": "tr-041",
+          "day": 5,
+          "type": "vocab",
+          "front": "nerede",
+          "back": "where"
+        },
+        {
+          "id": "tr-042",
+          "day": 5,
+          "type": "form",
+          "front": "bu / şu / o → plural",
+          "back": "bunlar / şunlar / onlar"
+        },
+        {
+          "id": "tr-043",
+          "day": 5,
+          "type": "sentence",
+          "front": "Bunlar ne?",
+          "back": "What are these?"
+        },
+        {
+          "id": "tr-044",
+          "day": 5,
+          "type": "sentence",
+          "front": "Kitap burada.",
+          "back": "The book is here."
+        },
+        {
+          "id": "tr-045",
+          "day": 5,
+          "type": "sentence",
+          "front": "Kedi nerede? — Orada.",
+          "back": "Where's the cat? — Over there."
+        },
+        {
+          "id": "tr-046",
+          "day": 5,
+          "type": "rule",
+          "front": "burada = bura + -da",
+          "back": "The place words are bura / şura / ora + the locative -da: 'in this place'"
+        },
+        {
+          "id": "tr-047",
+          "day": 6,
+          "type": "vocab",
+          "front": "burası",
+          "back": "this place, here (as the subject)"
+        },
+        {
+          "id": "tr-048",
+          "day": 6,
+          "type": "sentence",
+          "front": "Burası neresi?",
+          "back": "Where is this? / What place is this?"
+        },
+        {
+          "id": "tr-049",
+          "day": 6,
+          "type": "sentence",
+          "front": "Burası Padova.",
+          "back": "This is Padova."
+        },
+        {
+          "id": "tr-050",
+          "day": 6,
+          "type": "sentence",
+          "front": "Tuvalet nerede?",
+          "back": "Where is the toilet?"
+        },
+        {
+          "id": "tr-051",
+          "day": 6,
+          "type": "sentence",
+          "front": "Tuvalet şurada.",
+          "back": "The toilet is right there."
+        },
+        {
+          "id": "tr-052",
+          "day": 6,
+          "type": "sentence",
+          "front": "Burası çok güzel.",
+          "back": "It's very nice here."
+        },
+        {
+          "id": "tr-053",
+          "day": 6,
+          "type": "rule",
+          "front": "burada vs burası",
+          "back": "burada = here, the location ('X is here'); burası = this place, the thing you're talking about"
+        },
+        {
+          "id": "tr-054",
+          "day": 6,
+          "type": "vocab",
+          "front": "güzel",
+          "back": "beautiful, nice"
+        }
+      ]
+    },
+    {
+      "deck": "Türkçe::03 Countries & languages",
+      "topic": "Countries, nationalities, languages · -lı and -ca",
+      "source": "Udemy 10 · Countries & Nationalities & Languages",
+      "tags": [
+        "türkçe",
+        "plan-2w"
+      ],
+      "cards": [
+        {
+          "id": "tr-055",
+          "day": 8,
+          "type": "vocab",
+          "front": "Türkiye",
+          "back": "Turkey"
+        },
+        {
+          "id": "tr-056",
+          "day": 8,
+          "type": "form",
+          "front": "Türkiye → nationality → language",
+          "back": "Türk → Türkçe"
+        },
+        {
+          "id": "tr-057",
+          "day": 8,
+          "type": "form",
+          "front": "İtalya → nationality → language",
+          "back": "İtalyan → İtalyanca"
+        },
+        {
+          "id": "tr-058",
+          "day": 8,
+          "type": "form",
+          "front": "Almanya → nationality → language",
+          "back": "Alman → Almanca"
+        },
+        {
+          "id": "tr-059",
+          "day": 8,
+          "type": "form",
+          "front": "Fransa → nationality → language",
+          "back": "Fransız → Fransızca"
+        },
+        {
+          "id": "tr-060",
+          "day": 8,
+          "type": "form",
+          "front": "Rusya → nationality → language",
+          "back": "Rus → Rusça"
+        },
+        {
+          "id": "tr-061",
+          "day": 8,
+          "type": "form",
+          "front": "İngiltere → nationality → language",
+          "back": "İngiliz → İngilizce"
+        },
+        {
+          "id": "tr-062",
+          "day": 8,
+          "type": "form",
+          "front": "Amerika → nationality → language",
+          "back": "Amerikalı → İngilizce"
+        },
+        {
+          "id": "tr-063",
+          "day": 8,
+          "type": "vocab",
+          "front": "ülke",
+          "back": "country"
+        },
+        {
+          "id": "tr-064",
+          "day": 8,
+          "type": "vocab",
+          "front": "dil",
+          "back": "language (also: tongue)"
+        },
+        {
+          "id": "tr-065",
+          "day": 9,
+          "type": "rule",
+          "front": "-lı / -li / -lu / -lü",
+          "back": "'from (a place)': İstanbullu, Ankaralı, Amerikalı"
+        },
+        {
+          "id": "tr-066",
+          "day": 9,
+          "type": "rule",
+          "front": "-ca / -ce / -ça / -çe",
+          "back": "language: Türk → Türkçe, Rus → Rusça (ç after a voiceless consonant)"
+        },
+        {
+          "id": "tr-067",
+          "day": 9,
+          "type": "form",
+          "front": "İstanbul + -lu",
+          "back": "İstanbullu"
+        },
+        {
+          "id": "tr-068",
+          "day": 9,
+          "type": "form",
+          "front": "Roma + -lı",
+          "back": "Romalı"
+        },
+        {
+          "id": "tr-069",
+          "day": 9,
+          "type": "form",
+          "front": "İzmir + -li",
+          "back": "İzmirli"
+        },
+        {
+          "id": "tr-070",
+          "day": 9,
+          "type": "form",
+          "front": "Japon → language",
+          "back": "Japonca"
+        },
+        {
+          "id": "tr-071",
+          "day": 9,
+          "type": "form",
+          "front": "İspanya → nationality → language",
+          "back": "İspanyol → İspanyolca"
+        },
+        {
+          "id": "tr-072",
+          "day": 9,
+          "type": "vocab",
+          "front": "nereli",
+          "back": "from where (asking where someone is from)"
+        },
+        {
+          "id": "tr-073",
+          "day": 9,
+          "type": "vocab",
+          "front": "şehir",
+          "back": "city"
+        },
+        {
+          "id": "tr-074",
+          "day": 10,
+          "type": "sentence",
+          "front": "Olga is Russian.",
+          "back": "Olga Rus."
+        },
+        {
+          "id": "tr-075",
+          "day": 10,
+          "type": "sentence",
+          "front": "Hans is German.",
+          "back": "Hans Alman."
+        },
+        {
+          "id": "tr-076",
+          "day": 10,
+          "type": "sentence",
+          "front": "Turkish is a beautiful language.",
+          "back": "Türkçe güzel bir dil."
+        },
+        {
+          "id": "tr-077",
+          "day": 10,
+          "type": "sentence",
+          "front": "Marco is from Rome.",
+          "back": "Marco Romalı."
+        },
+        {
+          "id": "tr-078",
+          "day": 10,
+          "type": "sentence",
+          "front": "Nerelisin?",
+          "back": "Where are you from?",
+          "note": "preview of lesson 17"
+        },
+        {
+          "id": "tr-079",
+          "day": 10,
+          "type": "sentence",
+          "front": "Amerikalıyım.",
+          "back": "I'm American.",
+          "note": "preview of lesson 17"
+        },
+        {
+          "id": "tr-080",
+          "day": 10,
+          "type": "sentence",
+          "front": "Hangi dil?",
+          "back": "Which language?"
+        },
+        {
+          "id": "tr-081",
+          "day": 10,
+          "type": "rule",
+          "front": "Capital letters?",
+          "back": "Nationalities and languages are capitalised: Türk, Türkçe, İngilizce"
+        }
+      ]
+    },
+    {
+      "deck": "Türkçe::04 Possessives",
+      "topic": "Possessive adjectives and endings",
+      "source": "Udemy 11 · Possessive Adjectives",
+      "tags": [
+        "türkçe",
+        "plan-2w"
+      ],
+      "cards": [
+        {
+          "id": "tr-082",
+          "day": 11,
+          "type": "rule",
+          "front": "Possessive endings after a consonant",
+          "back": "-ım, -ın, -ı, -ımız, -ınız, -ları (four-way harmony: ı/i/u/ü)"
+        },
+        {
+          "id": "tr-083",
+          "day": 11,
+          "type": "form",
+          "front": "benim ev___",
+          "back": "benim evim"
+        },
+        {
+          "id": "tr-084",
+          "day": 11,
+          "type": "form",
+          "front": "senin ev___",
+          "back": "senin evin"
+        },
+        {
+          "id": "tr-085",
+          "day": 11,
+          "type": "form",
+          "front": "onun ev___",
+          "back": "onun evi"
+        },
+        {
+          "id": "tr-086",
+          "day": 11,
+          "type": "form",
+          "front": "bizim ev___",
+          "back": "bizim evimiz"
+        },
+        {
+          "id": "tr-087",
+          "day": 11,
+          "type": "form",
+          "front": "sizin ev___",
+          "back": "sizin eviniz"
+        },
+        {
+          "id": "tr-088",
+          "day": 11,
+          "type": "form",
+          "front": "onların ev___",
+          "back": "onların evi / onların evleri",
+          "note": "evleri can also mean 'their houses'"
+        },
+        {
+          "id": "tr-089",
+          "day": 11,
+          "type": "form",
+          "front": "benim okul___",
+          "back": "benim okulum",
+          "note": "u-harmony"
+        },
+        {
+          "id": "tr-090",
+          "day": 11,
+          "type": "rule",
+          "front": "Do I need benim / senin?",
+          "back": "No: the ending already says whose. evim = my house; add benim for emphasis"
+        },
+        {
+          "id": "tr-091",
+          "day": 11,
+          "type": "vocab",
+          "front": "ev",
+          "back": "house, home"
+        },
+        {
+          "id": "tr-092",
+          "day": 12,
+          "type": "rule",
+          "front": "Possessive endings after a vowel",
+          "back": "-m, -n, -sı, -mız, -nız, -ları (s is the buffer in 'his/her')"
+        },
+        {
+          "id": "tr-093",
+          "day": 12,
+          "type": "form",
+          "front": "araba → my / your / his",
+          "back": "arabam / araban / arabası"
+        },
+        {
+          "id": "tr-094",
+          "day": 12,
+          "type": "form",
+          "front": "anne → my / our",
+          "back": "annem / annemiz"
+        },
+        {
+          "id": "tr-095",
+          "day": 12,
+          "type": "form",
+          "front": "kitap → my / your / his",
+          "back": "kitabım / kitabın / kitabı",
+          "note": "softening before a vowel"
+        },
+        {
+          "id": "tr-096",
+          "day": 12,
+          "type": "form",
+          "front": "köpek → my",
+          "back": "köpeğim"
+        },
+        {
+          "id": "tr-097",
+          "day": 12,
+          "type": "form",
+          "front": "sözlük → my / your",
+          "back": "sözlüğüm / sözlüğün",
+          "note": "ü-harmony + softening"
+        },
+        {
+          "id": "tr-098",
+          "day": 12,
+          "type": "form",
+          "front": "ad → my / your",
+          "back": "adım / adın",
+          "note": "ad = name"
+        },
+        {
+          "id": "tr-099",
+          "day": 12,
+          "type": "vocab",
+          "front": "araba",
+          "back": "car"
+        },
+        {
+          "id": "tr-100",
+          "day": 12,
+          "type": "vocab",
+          "front": "arkadaş",
+          "back": "friend",
+          "note": "arkadaşım = my friend"
+        },
+        {
+          "id": "tr-101",
+          "day": 13,
+          "type": "sentence",
+          "front": "Adın ne?",
+          "back": "What's your name?"
+        },
+        {
+          "id": "tr-102",
+          "day": 13,
+          "type": "sentence",
+          "front": "Benim adım Ayşe.",
+          "back": "My name is Ayşe."
+        },
+        {
+          "id": "tr-103",
+          "day": 13,
+          "type": "sentence",
+          "front": "My mother is Italian.",
+          "back": "Annem İtalyan."
+        },
+        {
+          "id": "tr-104",
+          "day": 13,
+          "type": "sentence",
+          "front": "Our cat is at home.",
+          "back": "Kedimiz evde."
+        },
+        {
+          "id": "tr-105",
+          "day": 13,
+          "type": "sentence",
+          "front": "Where is your car?",
+          "back": "Araban nerede?"
+        },
+        {
+          "id": "tr-106",
+          "day": 13,
+          "type": "sentence",
+          "front": "My book is in the bag.",
+          "back": "Kitabım çantada."
+        },
+        {
+          "id": "tr-107",
+          "day": 13,
+          "type": "sentence",
+          "front": "My friend is from Istanbul.",
+          "back": "Arkadaşım İstanbullu."
+        },
+        {
+          "id": "tr-108",
+          "day": 13,
+          "type": "vocab",
+          "front": "aile",
+          "back": "family",
+          "note": "ailem = my family"
+        }
+      ]
+    }
+  ]
+}

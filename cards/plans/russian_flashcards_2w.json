@@ -1,0 +1,814 @@
+{
+  "version": 1,
+  "language": "ru",
+  "plan": "Russian 2-week aligned plan",
+  "decks": [
+    {
+      "deck": "Русский::01 Привет! Как дела?",
+      "topic": "Greetings · здесь / там · hard & soft vowels",
+      "source": "Smart Russian 0–A1 · lesson 2 (Привет! Как дела?) + lesson 7",
+      "tags": [
+        "русский",
+        "plan-2w"
+      ],
+      "cards": [
+        {
+          "id": "ru-001",
+          "day": 1,
+          "type": "vocab",
+          "front": "Приве́т!",
+          "back": "Hi! (informal)"
+        },
+        {
+          "id": "ru-002",
+          "day": 1,
+          "type": "vocab",
+          "front": "Здра́вствуйте!",
+          "back": "Hello! (formal, or to more than one person)",
+          "note": "the first в is silent"
+        },
+        {
+          "id": "ru-003",
+          "day": 1,
+          "type": "sentence",
+          "front": "Как дела́?",
+          "back": "How are you? (lit. how are things?)"
+        },
+        {
+          "id": "ru-004",
+          "day": 1,
+          "type": "sentence",
+          "front": "Хорошо́, спаси́бо.",
+          "back": "Fine, thanks."
+        },
+        {
+          "id": "ru-005",
+          "day": 1,
+          "type": "vocab",
+          "front": "Норма́льно.",
+          "back": "OK. / Not bad."
+        },
+        {
+          "id": "ru-006",
+          "day": 1,
+          "type": "vocab",
+          "front": "Пло́хо.",
+          "back": "Bad. / Not great."
+        },
+        {
+          "id": "ru-007",
+          "day": 1,
+          "type": "sentence",
+          "front": "А у тебя́?",
+          "back": "And you? (informal)",
+          "note": "formal: А у вас?"
+        },
+        {
+          "id": "ru-008",
+          "day": 1,
+          "type": "vocab",
+          "front": "Пока́!",
+          "back": "Bye! (informal)"
+        },
+        {
+          "id": "ru-009",
+          "day": 1,
+          "type": "vocab",
+          "front": "До свида́ния!",
+          "back": "Goodbye! (formal)"
+        },
+        {
+          "id": "ru-010",
+          "day": 1,
+          "type": "rule",
+          "front": "ты or вы?",
+          "back": "ты = one person you know well; вы = formal, or more than one person"
+        },
+        {
+          "id": "ru-011",
+          "day": 2,
+          "type": "vocab",
+          "front": "здесь",
+          "back": "here"
+        },
+        {
+          "id": "ru-012",
+          "day": 2,
+          "type": "vocab",
+          "front": "там",
+          "back": "there"
+        },
+        {
+          "id": "ru-013",
+          "day": 2,
+          "type": "vocab",
+          "front": "где",
+          "back": "where"
+        },
+        {
+          "id": "ru-014",
+          "day": 2,
+          "type": "vocab",
+          "front": "вот",
+          "back": "here is / there is (pointing)"
+        },
+        {
+          "id": "ru-015",
+          "day": 2,
+          "type": "rule",
+          "front": "Where is the word for 'is'?",
+          "back": "There isn't one in the present: Ма́ма здесь. = Mum is here."
+        },
+        {
+          "id": "ru-016",
+          "day": 2,
+          "type": "sentence",
+          "front": "Where's mum? — Mum is here.",
+          "back": "Где ма́ма? — Ма́ма здесь."
+        },
+        {
+          "id": "ru-017",
+          "day": 2,
+          "type": "sentence",
+          "front": "Where's the metro? — The metro is over there.",
+          "back": "Где метро́? — Метро́ там."
+        },
+        {
+          "id": "ru-018",
+          "day": 2,
+          "type": "sentence",
+          "front": "Where are you? — I'm here.",
+          "back": "Где ты? — Я здесь."
+        },
+        {
+          "id": "ru-019",
+          "day": 2,
+          "type": "sentence",
+          "front": "Here's the house.",
+          "back": "Вот дом."
+        },
+        {
+          "id": "ru-020",
+          "day": 3,
+          "type": "rule",
+          "front": "Hard and soft vowel pairs",
+          "back": "а – я, э – е, ы – и, о – ё, у – ю"
+        },
+        {
+          "id": "ru-021",
+          "day": 3,
+          "type": "rule",
+          "front": "How does unstressed о sound?",
+          "back": "Like а: молоко́, хорошо́. о sounds like о only when stressed"
+        },
+        {
+          "id": "ru-022",
+          "day": 3,
+          "type": "rule",
+          "front": "Why does ё never get a stress mark?",
+          "back": "ё is always stressed: всё, ещё"
+        },
+        {
+          "id": "ru-023",
+          "day": 3,
+          "type": "rule",
+          "front": "What does ь do?",
+          "back": "It softens the consonant before it: мать, день"
+        },
+        {
+          "id": "ru-024",
+          "day": 3,
+          "type": "vocab",
+          "front": "молоко́",
+          "back": "milk"
+        },
+        {
+          "id": "ru-025",
+          "day": 3,
+          "type": "vocab",
+          "front": "вода́",
+          "back": "water"
+        },
+        {
+          "id": "ru-026",
+          "day": 3,
+          "type": "vocab",
+          "front": "До за́втра!",
+          "back": "See you tomorrow!"
+        },
+        {
+          "id": "ru-027",
+          "day": 3,
+          "type": "vocab",
+          "front": "До встре́чи!",
+          "back": "See you! (lit. until we meet)"
+        }
+      ]
+    },
+    {
+      "deck": "Русский::02 Everyday words & phrases",
+      "topic": "Everyday nouns · no articles · survival phrases",
+      "source": "Smart Russian 0–A1 · lessons 3–4",
+      "tags": [
+        "русский",
+        "plan-2w"
+      ],
+      "cards": [
+        {
+          "id": "ru-028",
+          "day": 4,
+          "type": "vocab",
+          "front": "дом",
+          "back": "house"
+        },
+        {
+          "id": "ru-029",
+          "day": 4,
+          "type": "vocab",
+          "front": "кни́га",
+          "back": "book"
+        },
+        {
+          "id": "ru-030",
+          "day": 4,
+          "type": "vocab",
+          "front": "стол",
+          "back": "table"
+        },
+        {
+          "id": "ru-031",
+          "day": 4,
+          "type": "vocab",
+          "front": "окно́",
+          "back": "window"
+        },
+        {
+          "id": "ru-032",
+          "day": 4,
+          "type": "vocab",
+          "front": "маши́на",
+          "back": "car"
+        },
+        {
+          "id": "ru-033",
+          "day": 4,
+          "type": "vocab",
+          "front": "у́лица",
+          "back": "street"
+        },
+        {
+          "id": "ru-034",
+          "day": 4,
+          "type": "vocab",
+          "front": "магази́н",
+          "back": "shop"
+        },
+        {
+          "id": "ru-035",
+          "day": 4,
+          "type": "vocab",
+          "front": "рестора́н",
+          "back": "restaurant"
+        },
+        {
+          "id": "ru-036",
+          "day": 4,
+          "type": "vocab",
+          "front": "кот / ко́шка",
+          "back": "cat (tomcat) / cat (female, or cats in general)"
+        },
+        {
+          "id": "ru-037",
+          "day": 4,
+          "type": "rule",
+          "front": "How do you say 'a book' vs 'the book'?",
+          "back": "You don't: Russian has no articles. кни́га is both"
+        },
+        {
+          "id": "ru-038",
+          "day": 5,
+          "type": "vocab",
+          "front": "Спаси́бо.",
+          "back": "Thank you."
+        },
+        {
+          "id": "ru-039",
+          "day": 5,
+          "type": "vocab",
+          "front": "Пожа́луйста.",
+          "back": "Please. / You're welcome."
+        },
+        {
+          "id": "ru-040",
+          "day": 5,
+          "type": "vocab",
+          "front": "Извини́те.",
+          "back": "Excuse me. / Sorry. (formal)"
+        },
+        {
+          "id": "ru-041",
+          "day": 5,
+          "type": "vocab",
+          "front": "да / нет",
+          "back": "yes / no"
+        },
+        {
+          "id": "ru-042",
+          "day": 5,
+          "type": "sentence",
+          "front": "Я не понима́ю.",
+          "back": "I don't understand."
+        },
+        {
+          "id": "ru-043",
+          "day": 5,
+          "type": "sentence",
+          "front": "Повтори́те, пожа́луйста.",
+          "back": "Could you repeat that, please?"
+        },
+        {
+          "id": "ru-044",
+          "day": 5,
+          "type": "sentence",
+          "front": "Ме́дленнее, пожа́луйста.",
+          "back": "More slowly, please."
+        },
+        {
+          "id": "ru-045",
+          "day": 5,
+          "type": "sentence",
+          "front": "Я не зна́ю.",
+          "back": "I don't know."
+        },
+        {
+          "id": "ru-046",
+          "day": 5,
+          "type": "vocab",
+          "front": "Коне́чно!",
+          "back": "Of course!",
+          "note": "чн sounds like шн in this word"
+        },
+        {
+          "id": "ru-047",
+          "day": 6,
+          "type": "sentence",
+          "front": "Excuse me, where is the metro?",
+          "back": "Извини́те, где метро́?"
+        },
+        {
+          "id": "ru-048",
+          "day": 6,
+          "type": "sentence",
+          "front": "The shop is over there.",
+          "back": "Магази́н там."
+        },
+        {
+          "id": "ru-049",
+          "day": 6,
+          "type": "sentence",
+          "front": "Thank you very much!",
+          "back": "Спаси́бо большо́е!"
+        },
+        {
+          "id": "ru-050",
+          "day": 6,
+          "type": "sentence",
+          "front": "Не́ за что.",
+          "back": "You're welcome. / Don't mention it.",
+          "note": "lit. 'nothing for'"
+        },
+        {
+          "id": "ru-051",
+          "day": 6,
+          "type": "sentence",
+          "front": "Do you speak English?",
+          "back": "Вы говори́те по-англи́йски?"
+        },
+        {
+          "id": "ru-052",
+          "day": 6,
+          "type": "sentence",
+          "front": "I speak a little Russian.",
+          "back": "Я немно́го говорю́ по-ру́сски."
+        },
+        {
+          "id": "ru-053",
+          "day": 6,
+          "type": "sentence",
+          "front": "How do you say this in Russian?",
+          "back": "Как э́то по-ру́сски?"
+        },
+        {
+          "id": "ru-054",
+          "day": 6,
+          "type": "vocab",
+          "front": "Всё хорошо́.",
+          "back": "Everything's fine."
+        }
+      ]
+    },
+    {
+      "deck": "Русский::03 Что это? Кто это?",
+      "topic": "Что это? / Кто это? · noun gender · он, она, оно",
+      "source": "Smart Russian 0–A1 · lessons 5–6",
+      "tags": [
+        "русский",
+        "plan-2w"
+      ],
+      "cards": [
+        {
+          "id": "ru-055",
+          "day": 8,
+          "type": "sentence",
+          "front": "Что э́то?",
+          "back": "What is this?",
+          "note": "что sounds like што"
+        },
+        {
+          "id": "ru-056",
+          "day": 8,
+          "type": "sentence",
+          "front": "Э́то кни́га.",
+          "back": "This is a book."
+        },
+        {
+          "id": "ru-057",
+          "day": 8,
+          "type": "sentence",
+          "front": "Кто э́то?",
+          "back": "Who is this?"
+        },
+        {
+          "id": "ru-058",
+          "day": 8,
+          "type": "sentence",
+          "front": "Э́то Ива́н.",
+          "back": "This is Ivan."
+        },
+        {
+          "id": "ru-059",
+          "day": 8,
+          "type": "sentence",
+          "front": "Э́то дом? — Да, э́то дом.",
+          "back": "Is this a house? — Yes, it's a house.",
+          "note": "a yes/no question is just rising intonation"
+        },
+        {
+          "id": "ru-060",
+          "day": 8,
+          "type": "sentence",
+          "front": "Э́то не кот, э́то соба́ка.",
+          "back": "That's not a cat, it's a dog."
+        },
+        {
+          "id": "ru-061",
+          "day": 8,
+          "type": "rule",
+          "front": "кто or что for animals?",
+          "back": "кто: Кто э́то? — Э́то кот. что is only for things"
+        },
+        {
+          "id": "ru-062",
+          "day": 8,
+          "type": "vocab",
+          "front": "соба́ка",
+          "back": "dog"
+        },
+        {
+          "id": "ru-063",
+          "day": 8,
+          "type": "vocab",
+          "front": "ру́чка",
+          "back": "pen"
+        },
+        {
+          "id": "ru-064",
+          "day": 8,
+          "type": "vocab",
+          "front": "телефо́н",
+          "back": "phone"
+        },
+        {
+          "id": "ru-065",
+          "day": 9,
+          "type": "rule",
+          "front": "Masculine nouns end in…",
+          "back": "a consonant or -й: дом, стол, музе́й"
+        },
+        {
+          "id": "ru-066",
+          "day": 9,
+          "type": "rule",
+          "front": "Feminine nouns end in…",
+          "back": "-а or -я: кни́га, неде́ля"
+        },
+        {
+          "id": "ru-067",
+          "day": 9,
+          "type": "rule",
+          "front": "Neuter nouns end in…",
+          "back": "-о or -е: окно́, мо́ре"
+        },
+        {
+          "id": "ru-068",
+          "day": 9,
+          "type": "rule",
+          "front": "Nouns ending in -ь are…",
+          "back": "either gender, so learn each one: день (m), дверь (f)"
+        },
+        {
+          "id": "ru-069",
+          "day": 9,
+          "type": "form",
+          "front": "Где стол? — Вот …",
+          "back": "Вот он."
+        },
+        {
+          "id": "ru-070",
+          "day": 9,
+          "type": "form",
+          "front": "Где кни́га? — Вот …",
+          "back": "Вот она́."
+        },
+        {
+          "id": "ru-071",
+          "day": 9,
+          "type": "form",
+          "front": "Где окно́? — Вот …",
+          "back": "Вот оно́."
+        },
+        {
+          "id": "ru-072",
+          "day": 9,
+          "type": "rule",
+          "front": "па́па, де́душка: which gender?",
+          "back": "Masculine: words for men stay masculine even when they end in -а"
+        },
+        {
+          "id": "ru-073",
+          "day": 9,
+          "type": "vocab",
+          "front": "мо́ре",
+          "back": "sea"
+        },
+        {
+          "id": "ru-074",
+          "day": 10,
+          "type": "sentence",
+          "front": "Who's there? — It's mum.",
+          "back": "Кто там? — Э́то ма́ма."
+        },
+        {
+          "id": "ru-075",
+          "day": 10,
+          "type": "sentence",
+          "front": "Is that a café or a restaurant?",
+          "back": "Э́то кафе́ и́ли рестора́н?"
+        },
+        {
+          "id": "ru-076",
+          "day": 10,
+          "type": "sentence",
+          "front": "Where's the phone? — Here it is.",
+          "back": "Где телефо́н? — Вот он."
+        },
+        {
+          "id": "ru-077",
+          "day": 10,
+          "type": "sentence",
+          "front": "That's not a pen, it's a pencil.",
+          "back": "Э́то не ру́чка, э́то каранда́ш."
+        },
+        {
+          "id": "ru-078",
+          "day": 10,
+          "type": "rule",
+          "front": "и or а?",
+          "back": "и = and (adding); а = and / whereas (contrast): Э́то кот, а э́то соба́ка."
+        },
+        {
+          "id": "ru-079",
+          "day": 10,
+          "type": "rule",
+          "front": "кафе́, метро́, такси́: gender?",
+          "back": "Neuter, and they never change form"
+        },
+        {
+          "id": "ru-080",
+          "day": 10,
+          "type": "vocab",
+          "front": "каранда́ш",
+          "back": "pencil"
+        },
+        {
+          "id": "ru-081",
+          "day": 10,
+          "type": "vocab",
+          "front": "и́ли",
+          "back": "or"
+        }
+      ]
+    },
+    {
+      "deck": "Русский::04 Знакомство и семья",
+      "topic": "Meeting people · меня зовут · family",
+      "source": "Smart Russian 0–A1 · lessons 8–9 + russianspeak.com family vocabulary",
+      "tags": [
+        "русский",
+        "plan-2w"
+      ],
+      "cards": [
+        {
+          "id": "ru-082",
+          "day": 11,
+          "type": "sentence",
+          "front": "Как вас зову́т?",
+          "back": "What's your name? (formal)"
+        },
+        {
+          "id": "ru-083",
+          "day": 11,
+          "type": "sentence",
+          "front": "Как тебя́ зову́т?",
+          "back": "What's your name? (informal)"
+        },
+        {
+          "id": "ru-084",
+          "day": 11,
+          "type": "sentence",
+          "front": "Меня́ зову́т Ма́ша.",
+          "back": "My name is Masha."
+        },
+        {
+          "id": "ru-085",
+          "day": 11,
+          "type": "sentence",
+          "front": "О́чень прия́тно!",
+          "back": "Nice to meet you!"
+        },
+        {
+          "id": "ru-086",
+          "day": 11,
+          "type": "sentence",
+          "front": "Мне то́же.",
+          "back": "Likewise. / Me too."
+        },
+        {
+          "id": "ru-087",
+          "day": 11,
+          "type": "rule",
+          "front": "Why меня́ зову́т and not я зову́т?",
+          "back": "It's literally 'they call me': меня́ is the object form of я"
+        },
+        {
+          "id": "ru-088",
+          "day": 11,
+          "type": "sentence",
+          "front": "Познако́мьтесь, э́то Ива́н.",
+          "back": "Let me introduce you: this is Ivan."
+        },
+        {
+          "id": "ru-089",
+          "day": 11,
+          "type": "vocab",
+          "front": "До́брый день!",
+          "back": "Good afternoon! / Hello! (neutral)"
+        },
+        {
+          "id": "ru-090",
+          "day": 11,
+          "type": "vocab",
+          "front": "До́брое у́тро!",
+          "back": "Good morning!"
+        },
+        {
+          "id": "ru-091",
+          "day": 11,
+          "type": "vocab",
+          "front": "До́брый ве́чер!",
+          "back": "Good evening!"
+        },
+        {
+          "id": "ru-092",
+          "day": 12,
+          "type": "vocab",
+          "front": "семья́",
+          "back": "family"
+        },
+        {
+          "id": "ru-093",
+          "day": 12,
+          "type": "vocab",
+          "front": "мать / ма́ма",
+          "back": "mother / mum"
+        },
+        {
+          "id": "ru-094",
+          "day": 12,
+          "type": "vocab",
+          "front": "оте́ц / па́па",
+          "back": "father / dad"
+        },
+        {
+          "id": "ru-095",
+          "day": 12,
+          "type": "vocab",
+          "front": "брат / сестра́",
+          "back": "brother / sister"
+        },
+        {
+          "id": "ru-096",
+          "day": 12,
+          "type": "vocab",
+          "front": "сын / дочь",
+          "back": "son / daughter"
+        },
+        {
+          "id": "ru-097",
+          "day": 12,
+          "type": "vocab",
+          "front": "ба́бушка / де́душка",
+          "back": "grandmother / grandfather"
+        },
+        {
+          "id": "ru-098",
+          "day": 12,
+          "type": "vocab",
+          "front": "муж / жена́",
+          "back": "husband / wife"
+        },
+        {
+          "id": "ru-099",
+          "day": 12,
+          "type": "vocab",
+          "front": "роди́тели",
+          "back": "parents"
+        },
+        {
+          "id": "ru-100",
+          "day": 12,
+          "type": "rule",
+          "front": "мать and дочь: which gender?",
+          "back": "Feminine (-ь nouns for women)"
+        },
+        {
+          "id": "ru-101",
+          "day": 13,
+          "type": "sentence",
+          "front": "Who's that? — That's grandma.",
+          "back": "Кто э́то? — Э́то ба́бушка."
+        },
+        {
+          "id": "ru-102",
+          "day": 13,
+          "type": "sentence",
+          "front": "This is a brother and a sister.",
+          "back": "Э́то брат и сестра́."
+        },
+        {
+          "id": "ru-103",
+          "day": 13,
+          "type": "sentence",
+          "front": "Where's dad? — Dad's at home.",
+          "back": "Где па́па? — Па́па до́ма."
+        },
+        {
+          "id": "ru-104",
+          "day": 13,
+          "type": "sentence",
+          "front": "Mum is here, and dad is over there.",
+          "back": "Ма́ма здесь, а па́па там."
+        },
+        {
+          "id": "ru-105",
+          "day": 13,
+          "type": "sentence",
+          "front": "What's his name? — His name is Ivan.",
+          "back": "Как его́ зову́т? — Его́ зову́т Ива́н.",
+          "note": "его sounds like ево"
+        },
+        {
+          "id": "ru-106",
+          "day": 13,
+          "type": "sentence",
+          "front": "What's her name? — Her name is Olga.",
+          "back": "Как её зову́т? — Её зову́т О́льга."
+        },
+        {
+          "id": "ru-107",
+          "day": 13,
+          "type": "vocab",
+          "front": "до́ма",
+          "back": "at home"
+        },
+        {
+          "id": "ru-108",
+          "day": 13,
+          "type": "sentence",
+          "front": "Nice to meet you, Ivan!",
+          "back": "О́чень прия́тно, Ива́н!"
+        }
+      ]
+    }
+  ]
+}

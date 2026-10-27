@@ -1,0 +1,880 @@
+{
+  "version": 1,
+  "language": "it",
+  "plan": "Italian 2-week aligned plan",
+  "decks": [
+    {
+      "deck": "Italiano::01 Pronomi doppi",
+      "topic": "Pronomi doppi",
+      "source": "Udemy 4 — I Pronomi Doppi",
+      "tags": [
+        "italiano",
+        "plan-2w"
+      ],
+      "cards": [
+        {
+          "id": "it-001",
+          "day": 1,
+          "type": "form",
+          "front": "mi + lo",
+          "back": "me lo",
+          "note": "Me lo dai? = Will you give it to me?"
+        },
+        {
+          "id": "it-002",
+          "day": 1,
+          "type": "form",
+          "front": "ti + la",
+          "back": "te la"
+        },
+        {
+          "id": "it-003",
+          "day": 1,
+          "type": "form",
+          "front": "ci + li",
+          "back": "ce li"
+        },
+        {
+          "id": "it-004",
+          "day": 1,
+          "type": "form",
+          "front": "vi + le",
+          "back": "ve le"
+        },
+        {
+          "id": "it-005",
+          "day": 1,
+          "type": "form",
+          "front": "gli + lo",
+          "back": "glielo",
+          "note": "gli and le both become glie- and join into one word"
+        },
+        {
+          "id": "it-006",
+          "day": 1,
+          "type": "form",
+          "front": "le (to her) + la",
+          "back": "gliela",
+          "note": "'to him' and 'to her' look identical in the pair"
+        },
+        {
+          "id": "it-007",
+          "day": 1,
+          "type": "form",
+          "front": "mi + ne",
+          "back": "me ne"
+        },
+        {
+          "id": "it-008",
+          "day": 1,
+          "type": "form",
+          "front": "gli + ne",
+          "back": "gliene"
+        },
+        {
+          "id": "it-009",
+          "day": 1,
+          "type": "rule",
+          "front": "Where does the pronoun pair go with a conjugated verb?",
+          "back": "Before the verb: Te lo mando domani."
+        },
+        {
+          "id": "it-010",
+          "day": 1,
+          "type": "sentence",
+          "front": "Will you give it to me? (il libro)",
+          "back": "Me lo dai?"
+        },
+        {
+          "id": "it-011",
+          "day": 1,
+          "type": "sentence",
+          "front": "I'll send it to her. (la lettera)",
+          "back": "Gliela mando."
+        },
+        {
+          "id": "it-012",
+          "day": 1,
+          "type": "sentence",
+          "front": "He gives them to us. (i biglietti)",
+          "back": "Ce li dà."
+        },
+        {
+          "id": "it-013",
+          "day": 2,
+          "type": "sentence",
+          "front": "Ho dato la chiave a Marco. → replace both objects",
+          "back": "Gliel'ho data.",
+          "note": "participle agrees with la → data"
+        },
+        {
+          "id": "it-014",
+          "day": 2,
+          "type": "sentence",
+          "front": "Ho regalato i fiori a mia madre. → replace both objects",
+          "back": "Glieli ho regalati."
+        },
+        {
+          "id": "it-015",
+          "day": 2,
+          "type": "sentence",
+          "front": "Ti ho prestato le chiavi. → replace le chiavi",
+          "back": "Te le ho prestate."
+        },
+        {
+          "id": "it-016",
+          "day": 2,
+          "type": "sentence",
+          "front": "Mi ha parlato di questo problema. → use ne",
+          "back": "Me ne ha parlato."
+        },
+        {
+          "id": "it-017",
+          "day": 2,
+          "type": "sentence",
+          "front": "I told him / her. (it)",
+          "back": "Gliel'ho detto."
+        },
+        {
+          "id": "it-018",
+          "day": 2,
+          "type": "rule",
+          "front": "Passato prossimo + lo / la / li / le: what happens to the participle?",
+          "back": "It agrees: la → -a, li → -i, le → -e (Te le ho prestate)."
+        },
+        {
+          "id": "it-019",
+          "day": 2,
+          "type": "vocab",
+          "front": "prestare",
+          "back": "to lend"
+        },
+        {
+          "id": "it-020",
+          "day": 2,
+          "type": "vocab",
+          "front": "restituire",
+          "back": "to give back, to return",
+          "note": "restituisco"
+        },
+        {
+          "id": "it-021",
+          "day": 2,
+          "type": "vocab",
+          "front": "regalare",
+          "back": "to give (as a gift)"
+        },
+        {
+          "id": "it-022",
+          "day": 2,
+          "type": "vocab",
+          "front": "spiegare",
+          "back": "to explain"
+        },
+        {
+          "id": "it-023",
+          "day": 2,
+          "type": "vocab",
+          "front": "consigliare",
+          "back": "to recommend, to advise"
+        },
+        {
+          "id": "it-024",
+          "day": 2,
+          "type": "vocab",
+          "front": "promettere",
+          "back": "to promise",
+          "note": "participle: promesso"
+        },
+        {
+          "id": "it-025",
+          "day": 3,
+          "type": "sentence",
+          "front": "I have to tell you (it).",
+          "back": "Devo dirtelo. / Te lo devo dire."
+        },
+        {
+          "id": "it-026",
+          "day": 3,
+          "type": "sentence",
+          "front": "I can explain it to you.",
+          "back": "Posso spiegartelo. / Te lo posso spiegare."
+        },
+        {
+          "id": "it-027",
+          "day": 3,
+          "type": "sentence",
+          "front": "Will you lend it to me? (la bici)",
+          "back": "Vuoi prestarmela? / Me la vuoi prestare?"
+        },
+        {
+          "id": "it-028",
+          "day": 3,
+          "type": "rule",
+          "front": "Modal verb + infinitive: where does the pair go?",
+          "back": "Before the modal, or attached to the infinitive (which drops its final -e): Te lo devo dire / Devo dirtelo."
+        },
+        {
+          "id": "it-029",
+          "day": 3,
+          "type": "form",
+          "front": "si + lo",
+          "back": "se lo",
+          "note": "Marco si mette il cappotto → Se lo mette."
+        },
+        {
+          "id": "it-030",
+          "day": 3,
+          "type": "sentence",
+          "front": "Mi lavo le mani. → replace le mani",
+          "back": "Me le lavo."
+        },
+        {
+          "id": "it-031",
+          "day": 3,
+          "type": "vocab",
+          "front": "Me ne vado.",
+          "back": "I'm leaving. (andarsene)"
+        },
+        {
+          "id": "it-032",
+          "day": 3,
+          "type": "vocab",
+          "front": "Ce l'ho.",
+          "back": "I've got it. (averci + lo)"
+        },
+        {
+          "id": "it-033",
+          "day": 3,
+          "type": "vocab",
+          "front": "Non ce la faccio.",
+          "back": "I can't manage / I can't do it. (farcela)"
+        },
+        {
+          "id": "it-034",
+          "day": 3,
+          "type": "sentence",
+          "front": "There are three (of them).",
+          "back": "Ce ne sono tre."
+        }
+      ]
+    },
+    {
+      "deck": "Italiano::02 Imperativo + pronomi",
+      "topic": "Imperativo + pronomi",
+      "source": "Udemy 3 — Imperativo Negativo + Quiz 2",
+      "tags": [
+        "italiano",
+        "plan-2w"
+      ],
+      "cards": [
+        {
+          "id": "it-035",
+          "day": 4,
+          "type": "rule",
+          "front": "Affirmative tu / noi / voi imperative + pronouns: where do they go?",
+          "back": "Attached to the end: Mangialo! Mangiamolo! Mangiatelo!"
+        },
+        {
+          "id": "it-036",
+          "day": 4,
+          "type": "form",
+          "front": "dire → imperative (tu)",
+          "back": "di'"
+        },
+        {
+          "id": "it-037",
+          "day": 4,
+          "type": "form",
+          "front": "dare → imperative (tu)",
+          "back": "da' (or dai)"
+        },
+        {
+          "id": "it-038",
+          "day": 4,
+          "type": "form",
+          "front": "fare → imperative (tu)",
+          "back": "fa' (or fai)"
+        },
+        {
+          "id": "it-039",
+          "day": 4,
+          "type": "form",
+          "front": "andare → imperative (tu)",
+          "back": "va' (or vai)"
+        },
+        {
+          "id": "it-040",
+          "day": 4,
+          "type": "form",
+          "front": "stare → imperative (tu)",
+          "back": "sta' (or stai)"
+        },
+        {
+          "id": "it-041",
+          "day": 4,
+          "type": "rule",
+          "front": "di' / da' / fa' / va' / sta' + pronoun",
+          "back": "The consonant doubles: dimmi, dallo, fallo, vacci, stammi bene. Exception gli: digli, dagli."
+        },
+        {
+          "id": "it-042",
+          "day": 4,
+          "type": "sentence",
+          "front": "Tell me!",
+          "back": "Dimmi!"
+        },
+        {
+          "id": "it-043",
+          "day": 4,
+          "type": "sentence",
+          "front": "Give it to me! (il libro)",
+          "back": "Dammelo!"
+        },
+        {
+          "id": "it-044",
+          "day": 4,
+          "type": "sentence",
+          "front": "Do me a favour!",
+          "back": "Fammi un favore!"
+        },
+        {
+          "id": "it-045",
+          "day": 4,
+          "type": "sentence",
+          "front": "Tell him!",
+          "back": "Digli!",
+          "note": "no doubling with gli"
+        },
+        {
+          "id": "it-046",
+          "day": 4,
+          "type": "sentence",
+          "front": "Explain it to me! (la regola)",
+          "back": "Spiegamela!"
+        },
+        {
+          "id": "it-047",
+          "day": 5,
+          "type": "rule",
+          "front": "Negative tu imperative",
+          "back": "non + infinitive: Non parlare!"
+        },
+        {
+          "id": "it-048",
+          "day": 5,
+          "type": "rule",
+          "front": "Negative imperative + pronouns: where do they go?",
+          "back": "Before the verb or attached to the infinitive: Non me lo dire! / Non dirmelo!"
+        },
+        {
+          "id": "it-049",
+          "day": 5,
+          "type": "sentence",
+          "front": "Don't tell me! (it)",
+          "back": "Non dirmelo! / Non me lo dire!"
+        },
+        {
+          "id": "it-050",
+          "day": 5,
+          "type": "sentence",
+          "front": "Don't eat it! (la torta)",
+          "back": "Non mangiarla! / Non la mangiare!"
+        },
+        {
+          "id": "it-051",
+          "day": 5,
+          "type": "sentence",
+          "front": "Don't worry! (tu)",
+          "back": "Non preoccuparti! / Non ti preoccupare!"
+        },
+        {
+          "id": "it-052",
+          "day": 5,
+          "type": "sentence",
+          "front": "Don't worry! (voi)",
+          "back": "Non preoccupatevi! / Non vi preoccupate!"
+        },
+        {
+          "id": "it-053",
+          "day": 5,
+          "type": "sentence",
+          "front": "Let's not talk about it.",
+          "back": "Non parliamone!"
+        },
+        {
+          "id": "it-054",
+          "day": 5,
+          "type": "sentence",
+          "front": "Don't go! (tu)",
+          "back": "Non andare!"
+        },
+        {
+          "id": "it-055",
+          "day": 6,
+          "type": "rule",
+          "front": "Formal Lei imperative: which form is it?",
+          "back": "The congiuntivo presente: Parli! Prenda! Venga!",
+          "note": "bridge to week 2"
+        },
+        {
+          "id": "it-056",
+          "day": 6,
+          "type": "rule",
+          "front": "Lei imperative + pronouns: where do they go?",
+          "back": "Before the verb: Mi dica (never 'dicami')."
+        },
+        {
+          "id": "it-057",
+          "day": 6,
+          "type": "sentence",
+          "front": "Tell me / How can I help? (formal)",
+          "back": "Mi dica."
+        },
+        {
+          "id": "it-058",
+          "day": 6,
+          "type": "sentence",
+          "front": "Give it to me, please. (formal; il documento)",
+          "back": "Me lo dia, per favore."
+        },
+        {
+          "id": "it-059",
+          "day": 6,
+          "type": "sentence",
+          "front": "Have a seat. (formal)",
+          "back": "Si accomodi."
+        },
+        {
+          "id": "it-060",
+          "day": 6,
+          "type": "sentence",
+          "front": "Don't worry. (formal)",
+          "back": "Non si preoccupi."
+        },
+        {
+          "id": "it-061",
+          "day": 6,
+          "type": "sentence",
+          "front": "Excuse me — formal vs informal",
+          "back": "Mi scusi (Lei) / Scusami (tu)"
+        },
+        {
+          "id": "it-062",
+          "day": 6,
+          "type": "sentence",
+          "front": "Come in. (formal)",
+          "back": "Entri pure."
+        }
+      ]
+    },
+    {
+      "deck": "Italiano::03 Congiuntivo presente",
+      "topic": "Congiuntivo presente",
+      "source": "Udemy 5 — Uso del Congiuntivo; Udemy 6 (presente)",
+      "tags": [
+        "italiano",
+        "plan-2w"
+      ],
+      "cards": [
+        {
+          "id": "it-063",
+          "day": 8,
+          "type": "rule",
+          "front": "Penso che… / Credo che…",
+          "back": "+ congiuntivo (opinion)"
+        },
+        {
+          "id": "it-064",
+          "day": 8,
+          "type": "rule",
+          "front": "Voglio che…",
+          "back": "+ congiuntivo (wanting someone else to do something)"
+        },
+        {
+          "id": "it-065",
+          "day": 8,
+          "type": "rule",
+          "front": "Spero che…",
+          "back": "+ congiuntivo (hope)"
+        },
+        {
+          "id": "it-066",
+          "day": 8,
+          "type": "rule",
+          "front": "È importante che…",
+          "back": "+ congiuntivo (impersonal judgement)"
+        },
+        {
+          "id": "it-067",
+          "day": 8,
+          "type": "rule",
+          "front": "So che…",
+          "back": "+ indicativo (certainty): So che è vero vs Penso che sia vero"
+        },
+        {
+          "id": "it-068",
+          "day": 8,
+          "type": "form",
+          "front": "parlare → congiuntivo presente (io / tu / lui)",
+          "back": "che parli"
+        },
+        {
+          "id": "it-069",
+          "day": 8,
+          "type": "form",
+          "front": "prendere → congiuntivo presente (io / tu / lui)",
+          "back": "che prenda"
+        },
+        {
+          "id": "it-070",
+          "day": 8,
+          "type": "form",
+          "front": "dormire → congiuntivo presente (io / tu / lui)",
+          "back": "che dorma"
+        },
+        {
+          "id": "it-071",
+          "day": 8,
+          "type": "form",
+          "front": "finire → congiuntivo presente (io / tu / lui)",
+          "back": "che finisca"
+        },
+        {
+          "id": "it-072",
+          "day": 8,
+          "type": "form",
+          "front": "congiuntivo presente: noi / voi / loro",
+          "back": "-iamo, -iate, -ino (-are) / -ano (-ere, -ire): che parliamo, parliate, parlino"
+        },
+        {
+          "id": "it-073",
+          "day": 8,
+          "type": "rule",
+          "front": "io / tu / lui forms are identical — how do you avoid confusion?",
+          "back": "Add the subject: Penso che tu abbia ragione."
+        },
+        {
+          "id": "it-074",
+          "day": 8,
+          "type": "vocab",
+          "front": "temere che / dubitare che",
+          "back": "to fear that / to doubt that (+ congiuntivo)"
+        },
+        {
+          "id": "it-075",
+          "day": 9,
+          "type": "form",
+          "front": "essere → congiuntivo presente",
+          "back": "sia, sia, sia, siamo, siate, siano"
+        },
+        {
+          "id": "it-076",
+          "day": 9,
+          "type": "form",
+          "front": "avere → congiuntivo presente",
+          "back": "abbia, abbia, abbia, abbiamo, abbiate, abbiano"
+        },
+        {
+          "id": "it-077",
+          "day": 9,
+          "type": "form",
+          "front": "andare → congiuntivo presente",
+          "back": "vada, vada, vada, andiamo, andiate, vadano"
+        },
+        {
+          "id": "it-078",
+          "day": 9,
+          "type": "form",
+          "front": "fare → congiuntivo presente (io)",
+          "back": "faccia"
+        },
+        {
+          "id": "it-079",
+          "day": 9,
+          "type": "form",
+          "front": "potere → congiuntivo presente (io)",
+          "back": "possa"
+        },
+        {
+          "id": "it-080",
+          "day": 9,
+          "type": "form",
+          "front": "volere → congiuntivo presente (io)",
+          "back": "voglia"
+        },
+        {
+          "id": "it-081",
+          "day": 9,
+          "type": "form",
+          "front": "sapere → congiuntivo presente (io)",
+          "back": "sappia"
+        },
+        {
+          "id": "it-082",
+          "day": 9,
+          "type": "form",
+          "front": "dovere → congiuntivo presente (io)",
+          "back": "debba"
+        },
+        {
+          "id": "it-083",
+          "day": 9,
+          "type": "form",
+          "front": "dare / stare / dire / venire → congiuntivo presente (io)",
+          "back": "dia / stia / dica / venga"
+        },
+        {
+          "id": "it-084",
+          "day": 10,
+          "type": "sentence",
+          "front": "I think he's right.",
+          "back": "Penso che abbia ragione."
+        },
+        {
+          "id": "it-085",
+          "day": 10,
+          "type": "sentence",
+          "front": "I hope you're well.",
+          "back": "Spero che tu stia bene."
+        },
+        {
+          "id": "it-086",
+          "day": 10,
+          "type": "sentence",
+          "front": "I want you to come.",
+          "back": "Voglio che tu venga."
+        },
+        {
+          "id": "it-087",
+          "day": 10,
+          "type": "sentence",
+          "front": "It might rain. (It's possible that…)",
+          "back": "È possibile che piova."
+        },
+        {
+          "id": "it-088",
+          "day": 10,
+          "type": "rule",
+          "front": "Same subject in both halves: I think I'm right.",
+          "back": "di + infinitive: Penso di avere ragione (not 'che io abbia')."
+        },
+        {
+          "id": "it-089",
+          "day": 10,
+          "type": "sentence",
+          "front": "Although it's late…",
+          "back": "Benché / Sebbene sia tardi…"
+        },
+        {
+          "id": "it-090",
+          "day": 10,
+          "type": "sentence",
+          "front": "Before you leave…",
+          "back": "Prima che tu parta…"
+        },
+        {
+          "id": "it-091",
+          "day": 10,
+          "type": "sentence",
+          "front": "I'm glad you're here.",
+          "back": "Sono contento/a che tu sia qui."
+        }
+      ]
+    },
+    {
+      "deck": "Italiano::04 Congiuntivo imperfetto",
+      "topic": "Congiuntivo imperfetto",
+      "source": "Udemy 6 (imperfetto) + Quiz 3",
+      "tags": [
+        "italiano",
+        "plan-2w"
+      ],
+      "cards": [
+        {
+          "id": "it-092",
+          "day": 11,
+          "type": "form",
+          "front": "congiuntivo imperfetto endings",
+          "back": "-ssi, -ssi, -sse, -ssimo, -ste, -ssero"
+        },
+        {
+          "id": "it-093",
+          "day": 11,
+          "type": "form",
+          "front": "parlare → congiuntivo imperfetto (io)",
+          "back": "parlassi"
+        },
+        {
+          "id": "it-094",
+          "day": 11,
+          "type": "form",
+          "front": "prendere → congiuntivo imperfetto (io)",
+          "back": "prendessi"
+        },
+        {
+          "id": "it-095",
+          "day": 11,
+          "type": "form",
+          "front": "dormire → congiuntivo imperfetto (io)",
+          "back": "dormissi"
+        },
+        {
+          "id": "it-096",
+          "day": 11,
+          "type": "form",
+          "front": "essere → congiuntivo imperfetto",
+          "back": "fossi, fossi, fosse, fossimo, foste, fossero"
+        },
+        {
+          "id": "it-097",
+          "day": 11,
+          "type": "form",
+          "front": "avere → congiuntivo imperfetto (io)",
+          "back": "avessi"
+        },
+        {
+          "id": "it-098",
+          "day": 11,
+          "type": "form",
+          "front": "stare → congiuntivo imperfetto (io)",
+          "back": "stessi"
+        },
+        {
+          "id": "it-099",
+          "day": 11,
+          "type": "form",
+          "front": "dare → congiuntivo imperfetto (io)",
+          "back": "dessi"
+        },
+        {
+          "id": "it-100",
+          "day": 11,
+          "type": "form",
+          "front": "fare → congiuntivo imperfetto (io)",
+          "back": "facessi"
+        },
+        {
+          "id": "it-101",
+          "day": 11,
+          "type": "form",
+          "front": "dire → congiuntivo imperfetto (io)",
+          "back": "dicessi"
+        },
+        {
+          "id": "it-102",
+          "day": 11,
+          "type": "form",
+          "front": "bere → congiuntivo imperfetto (io)",
+          "back": "bevessi"
+        },
+        {
+          "id": "it-103",
+          "day": 12,
+          "type": "rule",
+          "front": "Main verb in the present → which congiuntivo?",
+          "back": "Presente: Penso che sia…"
+        },
+        {
+          "id": "it-104",
+          "day": 12,
+          "type": "rule",
+          "front": "Main verb in the past or conditional → which congiuntivo?",
+          "back": "Imperfetto: Pensavo che fosse… / Vorrei che fosse…"
+        },
+        {
+          "id": "it-105",
+          "day": 12,
+          "type": "sentence",
+          "front": "I thought you were Italian.",
+          "back": "Pensavo che tu fossi italiano/a."
+        },
+        {
+          "id": "it-106",
+          "day": 12,
+          "type": "sentence",
+          "front": "I wanted you to come.",
+          "back": "Volevo che tu venissi."
+        },
+        {
+          "id": "it-107",
+          "day": 12,
+          "type": "sentence",
+          "front": "I'd like you to help me.",
+          "back": "Vorrei che tu mi aiutassi."
+        },
+        {
+          "id": "it-108",
+          "day": 12,
+          "type": "sentence",
+          "front": "It was important that we arrived on time.",
+          "back": "Era importante che arrivassimo in orario."
+        },
+        {
+          "id": "it-109",
+          "day": 12,
+          "type": "sentence",
+          "front": "I didn't know he had a cat.",
+          "back": "Non sapevo che avesse un gatto."
+        },
+        {
+          "id": "it-110",
+          "day": 13,
+          "type": "sentence",
+          "front": "If only I had more time!",
+          "back": "Magari avessi più tempo!"
+        },
+        {
+          "id": "it-111",
+          "day": 13,
+          "type": "sentence",
+          "front": "If I were you…",
+          "back": "Se fossi in te…"
+        },
+        {
+          "id": "it-112",
+          "day": 13,
+          "type": "sentence",
+          "front": "If I had time, I'd come.",
+          "back": "Se avessi tempo, verrei.",
+          "note": "preview of Udemy 7, Il Periodo Ipotetico"
+        },
+        {
+          "id": "it-113",
+          "day": 13,
+          "type": "sentence",
+          "front": "He talks as if he knew everything.",
+          "back": "Parla come se sapesse tutto."
+        },
+        {
+          "id": "it-114",
+          "day": 13,
+          "type": "sentence",
+          "front": "Sono sicuro che lui ___ (venire).",
+          "back": "viene — certainty → indicativo"
+        },
+        {
+          "id": "it-115",
+          "day": 13,
+          "type": "sentence",
+          "front": "Dubito che ___ (essere) vero.",
+          "back": "sia — doubt → congiuntivo"
+        },
+        {
+          "id": "it-116",
+          "day": 13,
+          "type": "rule",
+          "front": "È vero che… vs Non è vero che…",
+          "back": "È vero che è tardi (indicativo) / Non è vero che sia tardi (congiuntivo)"
+        },
+        {
+          "id": "it-117",
+          "day": 13,
+          "type": "rule",
+          "front": "Credo che… vs Mi ha detto che…",
+          "back": "Credo che sia (opinion → congiuntivo) / Mi ha detto che è (reported fact → indicativo)"
+        }
+      ]
+    }
+  ]
+}

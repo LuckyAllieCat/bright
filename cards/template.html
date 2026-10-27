@@ -60,6 +60,7 @@ svg { width: 24px; height: 24px; fill: currentColor; flex: none; }
 .exp.open svg { transform: rotate(90deg); }
 .row.sub .exp { width: 60px; }
 .name { flex: 1; min-width: 0; font-size: 17px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.name small { margin-left: 8px; font-size: 13px; color: var(--muted); }
 .nums { display: flex; font-variant-numeric: tabular-nums; font-size: 15px; padding-right: 12px; }
 .nums span { width: 38px; text-align: right; }
 .n { color: var(--new); } .l { color: var(--learn); } .r { color: var(--due); }
@@ -182,6 +183,39 @@ function rollover() {
   if (S.meta.day !== d) { S.meta = { day: d, newDone: {}, revDone: {}, studied: 0, secs: 0, m: Date.now() }; }
 }
 
+/* ---------- 2-week plans ---------- */
+// a plan card opens as new on its language's start date + (day − 1), the same start date as in my.planner
+const PLANS = DATA.decks.filter(d => d.plan);
+const isoDay = n => new Date(n * DAY_MS).toISOString().slice(0, 10);
+const dayNum = s => Math.floor(Date.parse(s + 'T00:00:00Z') / DAY_MS);
+function planInit() {
+  const start = S.settings.planStart ||= {};
+  let changed = false;
+  for (const d of PLANS) if (!start[d.plan]) { start[d.plan] = isoDay(today()); changed = true; }
+  if (PLANS.length && !S.settings.plansAdded) {   // first run with the plans: old decks in the same languages stop adding new cards (reviews go on)
+    const pause = S.settings.pauseNew ||= {};
+    for (const d of DATA.decks) if (!d.plan && PLANS.some(p => p.lang === d.lang)) pause[d.key] = 1;
+    S.settings.plansAdded = 1; changed = true;
+  }
+  if (changed) { S.settings.m = Date.now(); saveLocal(); }
+}
+planInit();
+const planDay = plan => today() - dayNum(S.settings.planStart[plan]) + 1;
+const released = c => !DECK[c.d].plan || c.day <= planDay(DECK[c.d].plan);
+// "foreign language first" (per plan language): English → foreign cards are asked the other way round
+const foreignFirst = dk => !!(DECK[dk]?.plan && S.settings.foreignFirst?.[DECK[dk].plan]);
+const face = c => c.rf && foreignFirst(c.d) ? { ...c, f: c.rf, b: c.rb, auto: 1 } : c;
+function toggleForeignFirst(dk) {
+  const ff = S.settings.foreignFirst ||= {}, plan = DECK[dk].plan;
+  if (ff[plan]) delete ff[plan]; else ff[plan] = 1;
+  S.settings.m = Date.now(); saveLocal();
+  toast(ff[plan] ? `${DECK[dk].name}: foreign language first` : `${DECK[dk].name}: cards as written`);
+}
+function planDayLabel(plan) {
+  const n = planDay(plan);
+  return n < 1 ? `starts in ${1 - n} day${n === 0 ? '' : 's'}` : n > 14 ? 'plan finished' : `day ${n} of 14`;
+}
+
 /* ---------- scheduler (Anki-style SM-2) ---------- */
 const LEARN = [1, 10], RELEARN = [10], LEARN_AHEAD = 20 * 6e4, MAX_IVL = 36500;
 const st = id => S.cards[id] || { s: 'n' };
@@ -234,7 +268,7 @@ function queues(dk, sub) {
   for (const c of deckCards(dk, sub)) {
     if (!avail(c, t)) continue;
     const s = st(c.id);
-    if (s.s === 'n') nu.push(c);
+    if (s.s === 'n') { if (!S.settings.pauseNew?.[dk] && released(c)) nu.push(c); }
     else if (s.s === 'r') { if (s.due <= t) rev.push(c); }
     else if (s.due <= soon) lrn.push(c);
     else if (s.due < nextDayEndMs()) lrnLater.push(c);
@@ -296,7 +330,7 @@ function renderDecks() {
     const open = !!S.open[d.key], hasSubs = d.subs.length > 0;
     rows.push(`<div class="row" tabindex="0" data-deck="${d.key}">
       <button class="exp ${open ? 'open' : ''}" data-toggle="${d.key}" aria-label="${open ? 'Collapse' : 'Expand'} ${esc(d.name)}" ${hasSubs ? '' : 'style="visibility:hidden"'}>${svg('chev')}</button>
-      <div class="name">${esc(d.name)}</div>${countsHtml(queues(d.key))}</div>`);
+      <div class="name">${esc(d.name)}${d.plan ? `<small>${planDayLabel(d.plan)}</small>` : S.settings.pauseNew?.[d.key] ? '<small>new paused</small>' : ''}</div>${countsHtml(queues(d.key))}</div>`);
     if (open) d.subs.forEach((s, i) => rows.push(`<div class="row sub" tabindex="0" data-deck="${d.key}" data-sub="${i}">
       <span class="exp"></span><div class="name">${esc(s)}</div>${countsHtml(queues(d.key, i))}</div>`));
   }
@@ -357,9 +391,10 @@ function renderReview() {
   }
   const k = R.queue;
   const counts = `<div class="countbar"><span class="n ${k === 'n' ? 'cur' : ''}">${q.nu.length}</span><span class="l ${k === 'l' ? 'cur' : ''}">${q.lrn.length + q.lrnLater.length}</span><span class="r ${k === 'r' ? 'cur' : ''}">${q.rev.length}</span></div>`;
-  const dict = c.auto && !/class="ans big"/.test(c.f);
-  let body = dict ? `<div>${speakBtn(c, true)}</div>${c.f}` : c.f + (c.auto ? `<div>${speakBtn(c)}</div>` : '');
-  if (R.side === 'a') body += `<hr id="answer">${c.b}${!c.auto ? `<div>${speakBtn(c)}</div>` : ''}`;
+  const fc = face(c);
+  const dict = fc.auto && !/class="ans big"/.test(fc.f);
+  let body = dict ? `<div>${speakBtn(c, true)}</div>${fc.f}` : fc.f + (fc.auto ? `<div>${speakBtn(c)}</div>` : '');
+  if (R.side === 'a') body += `<hr id="answer">${fc.b}${!fc.auto ? `<div>${speakBtn(c)}</div>` : ''}`;
   const s = st(c.id);
   const btns = R.side === 'q'
     ? `<button class="show" data-act="show">Show answer</button>`
@@ -371,8 +406,9 @@ function renderReview() {
 function afterReviewRender() {
   const c = R.card; if (!c || !S.settings.autoplay) return;
   const lang = DECK[c.d].lang; if (!lang || !c.say) return;
-  if (R.side === 'q' && c.auto && !R.spokeQ) { R.spokeQ = true; speak(c.say, lang); }
-  if (R.side === 'a' && !c.auto && !R.spokeA) { R.spokeA = true; speak(c.say, lang); }
+  const auto = face(c).auto;
+  if (R.side === 'q' && auto && !R.spokeQ) { R.spokeQ = true; speak(c.say, lang); }
+  if (R.side === 'a' && !auto && !R.spokeA) { R.spokeA = true; speak(c.say, lang); }
 }
 function showAnswer() { if (R.side === 'q') { R.side = 'a'; render(); document.getElementById('answer')?.scrollIntoView({ block: 'nearest' }); } }
 function answer(ease) {
@@ -452,21 +488,28 @@ function renderSettings() {
       <label class="switch" for="sDark"><span>Dark theme<br><span class="help">Off: white and blue. On: dark, easier on the eyes at night.</span></span><input id="sDark" type="checkbox" ${S.settings.theme === 'dark' ? 'checked' : ''}></label>
       <div class="sect">Audio</div>
       <label class="switch" for="sAuto"><span>Play pronunciation automatically<br><span class="help">Turkish, Russian and Italian cards use your phone's text-to-speech voices.</span></span><input id="sAuto" type="checkbox" ${S.settings.autoplay ? 'checked' : ''}></label>
+      ${PLANS.length ? `<div class="sect">2-week plans</div>
+      <p class="help">Each plan day's new cards open on the start date + (day − 1); days 7 and 14 are review days. Use the same start date as in my.planner.</p>
+      ${PLANS.map(d => `<div class="field"><label for="sPlan-${d.plan}">${esc(d.name)} start date · ${planDayLabel(d.plan)}</label><input id="sPlan-${d.plan}" type="date" value="${S.settings.planStart[d.plan]}"></div>
+      <label class="switch" for="sFF-${d.plan}"><span>${esc(d.name)}: foreign language first<br><span class="help">English → ${esc(d.name)} cards are asked the other way round. Also in the deck's long-press menu.</span></span><input id="sFF-${d.plan}" type="checkbox" ${foreignFirst(d.key) ? 'checked' : ''}></label>`).join('')}` : ''}
       <div class="sect">Backup</div>
       <p class="help">Your progress is saved in this browser. Save a backup now and then, and restore it if you clear your browser data or switch phones.</p>
       <div class="btnrow"><button class="btn" data-act="saveBackup">Save backup file</button><button class="btn flat" data-act="copyBackup">Copy as text</button></div>
       <div class="field"><label for="sFile">Restore from a backup file</label><input id="sFile" type="file" accept=".json,application/json"></div>
       <div class="field"><label for="sRestore">Or paste a backup</label><textarea id="sRestore" placeholder="Paste a backup here"></textarea></div>
       <div class="btnrow"><button class="btn flat" data-act="restore">Restore</button></div>
-      <p class="help">${DATA.cards.length} cards: core vocabulary plus the words and phrases from your Brighter Path lessons.</p>
+      <p class="help">${DATA.cards.length} cards: core vocabulary, the words and phrases from your Brighter Path lessons, and the 2-week plan decks.</p>
     </div></section>`;
 }
 function saveSettings() {
   const n = Math.max(0, Math.min(500, parseInt(document.getElementById('sNew').value, 10) || 0));
   const r = Math.max(0, Math.min(9999, parseInt(document.getElementById('sRev').value, 10) || 0));
   const a = document.getElementById('sAuto').checked, th = document.getElementById('sDark').checked ? 'dark' : 'light';
-  if (n !== S.settings.newPerDay || r !== S.settings.revPerDay || a !== S.settings.autoplay || th !== (S.settings.theme || 'light')) {
-    S.settings = { newPerDay: n, revPerDay: r, autoplay: a, theme: th, m: Date.now() }; markDirty('meta'); toast('Settings saved');
+  const start = { ...S.settings.planStart };
+  for (const d of PLANS) { const v = document.getElementById('sPlan-' + d.plan).value; if (/^\d{4}-\d\d-\d\d$/.test(v)) start[d.plan] = v; }
+  const startChanged = PLANS.some(d => start[d.plan] !== S.settings.planStart[d.plan]);
+  if (n !== S.settings.newPerDay || r !== S.settings.revPerDay || a !== S.settings.autoplay || th !== (S.settings.theme || 'light') || startChanged) {
+    S.settings = { ...S.settings, newPerDay: n, revPerDay: r, autoplay: a, theme: th, planStart: start, m: Date.now() }; markDirty('meta'); toast('Settings saved');
   }
   go({ name: 'decks' });
 }
@@ -488,7 +531,10 @@ function deckSheet(dk, sub, confirmReset) {
     <button data-act="close">Cancel</button></div>`;
   return `<div class="scrim" data-act="close"></div><div class="sheet" role="dialog" aria-label="${esc(name)}">
     <h3>${esc(name)}</h3>
+    ${DECK[dk].plan ? `<p>${esc([sub == null ? planDayLabel(DECK[dk].plan) : DECK[dk].sources[sub], DECK[dk].tags.join(', ')].filter(Boolean).join(' · '))}</p>` : ''}
     <button data-act="study" data-deck="${dk}" data-sub="${s}">Study now</button>
+    ${DECK[dk].plan ? `<button data-act="foreignFirst" data-deck="${dk}">${foreignFirst(dk) ? 'Show cards as written (English first)' : 'Show foreign language first'}</button>` : ''}
+    ${sub == null && !DECK[dk].plan && dk !== 'mine' ? `<button data-act="pauseNew" data-deck="${dk}">${S.settings.pauseNew?.[dk] ? 'Resume new cards' : 'Pause new cards (reviews go on)'}</button>` : ''}
     <button data-act="add" data-deck="${dk}" data-sub="${s}">Add a card here</button>
     <button data-act="unhide" data-deck="${dk}" data-sub="${s}">Bring back buried &amp; suspended cards</button>
     <button data-act="askReset" data-deck="${dk}" data-sub="${s}">Reset progress…</button>
@@ -500,6 +546,7 @@ function reviewMenu() {
     <button data-act="bury">Bury card</button>
     <button data-act="suspend">Suspend card</button>
     <button data-act="forget">Reset card to new</button>
+    ${DECK[R.card.d].plan ? `<button data-act="foreignFirst" data-deck="${R.card.d}">${foreignFirst(R.card.d) ? 'English first' : 'Foreign language first'}</button>` : ''}
     ${R.card.custom ? '<button data-act="delCard">Delete card</button>' : ''}
     <button data-act="addHere">Add card</button></div>`;
 }
@@ -520,6 +567,7 @@ function applyTheme() {
   document.querySelector('meta[name=theme-color]').content = dark ? '#1e2a33' : '#1d9fe6';
 }
 applyTheme();
+app.addEventListener('change', e => { if (e.target.id?.startsWith('sFF-')) { const d = PLANS.find(p => 'sFF-' + p.plan === e.target.id); if (e.target.checked !== foreignFirst(d.key)) toggleForeignFirst(d.key); } });
 app.addEventListener('change', e => { if (e.target.id === 'sDark') { S.settings.theme = e.target.checked ? 'dark' : 'light'; S.settings.m = Date.now(); saveLocal(); applyTheme(); } });
 
 /* events */
@@ -560,6 +608,8 @@ app.addEventListener('click', e => {
     case 'delCard': { const id = R.card.id; const cc = S.custom.list.find(x => x.id === id); if (cc) { cc.del = 1; cc.m = Date.now(); } S.custom.m = Date.now(); rebuildCards(); markDirty('custom'); toast('Card deleted'); overlay = ''; pickNext(); render(); break; }
     case 'study': startReview(t.dataset.deck, subOf(t)); break;
     case 'unhide': { let n = 0; for (const c of deckCards(t.dataset.deck, subOf(t))) { const s = st(c.id); if (s.sus || s.bury != null) { const x = { ...s, m: Date.now() }; delete x.sus; delete x.bury; S.cards[c.id] = x; n++; } } markDirty(t.dataset.deck); toast(n ? `${n} card${n === 1 ? '' : 's'} brought back` : 'No hidden cards in this deck'); setOverlay(''); break; }
+    case 'foreignFirst': toggleForeignFirst(t.dataset.deck); if (view.name === 'review' && R?.card) R.spokeQ = R.spokeA = false; setOverlay(''); break;
+    case 'pauseNew': { const p = S.settings.pauseNew ||= {}, dk = t.dataset.deck; if (p[dk]) delete p[dk]; else p[dk] = 1; S.settings.m = Date.now(); saveLocal(); toast(p[dk] ? 'New cards paused' : 'New cards resumed'); setOverlay(''); break; }
     case 'askReset': setOverlay(deckSheet(t.dataset.deck, subOf(t), true)); break;
     case 'doReset': { const now = Date.now(); for (const c of deckCards(t.dataset.deck, subOf(t))) if (S.cards[c.id]) S.cards[c.id] = { s: 'n', m: now }; markDirty(t.dataset.deck); toast('Deck reset'); setOverlay(''); break; }
     case 'saveBackup': {
